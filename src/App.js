@@ -77,6 +77,18 @@ function App() {
      </div>
    
     </BrowserRouter>
+    <footer class="footer" >
+    <div className="footer-copyright text-center py-2">
+       &copy;   InterviewScheduler
+      
+    </div>
+                        {/* <center>
+                            &nbsp;   &nbsp; &nbsp; &nbsp;  &copy;   InterviewScheduler
+
+                        </center> */}
+
+                    </footer>
+                    
     </div>
     );
 

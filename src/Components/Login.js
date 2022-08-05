@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {toast} from 'react-toastify';
 import {NavLink } from "react-router-dom";
 import'./Login.css'
+import { Alert } from "bootstrap";
 
 
 
@@ -14,7 +15,8 @@ class Login extends Component{
         this.state={
             username:'',
             password:'',
-            errors:{}           
+            errors:{}        
+               
             
         }
         this.username=this.username.bind(this);
@@ -34,12 +36,12 @@ class Login extends Component{
         if(this.state.username=="") {
             
            formvalidstatus=false;
-           errors["username"]="*Please enter your username !";
+           errors["username"]="Please enter your username !";
         }
        
          if(this.state.password==""){
             formvalidstatus=false;
-            errors["password"]="*Please enter your password !";
+            errors["password"]="Please enter your password !";
         }
        
         //else{
@@ -56,7 +58,7 @@ class Login extends Component{
                 console.log('user=>'+JSON.stringify(user));
                 AuthService.login(user).then(res=>{
                     
-                    if(res['status']==200)
+                     if(res['status']==200)
                     {
                         localStorage.setItem('useremailid',this.state.username);
                         localStorage.setItem('Loginsuccess',true); 
@@ -66,11 +68,20 @@ class Login extends Component{
                         
                     }else{
                       
-                            toast('invalid username or password', { position: toast.POSITION.TOP_CENTER})
+                           // toast('invalid username or password', { position: toast.POSITION.TOP_CENTER})
+                           // toast('Default!', { position: toast.POSITION.TOP_LEFT })
+                            // toast.success('failed!', {
+                            //   position: toast.POSITION.TOP_CENTER,
+                            //   autoClose: 1,
+                        
+                            
+                            // })
+                          alert('invalid username or password')
+                            
                              
-                         toast.show();        
-                        localStorage.removeItem('useremailid');
-                        window.location='/';
+                        //  toast.show();        
+                        // localStorage.removeItem('useremailid');
+                        // window.location='/';
                     }
                     
                 });

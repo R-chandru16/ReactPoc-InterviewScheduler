@@ -16,17 +16,23 @@ class Register extends Component{
             confirmpassword:'',
             Rolename:'',
             errors:{}   
+            
         }
-
+     
         this.username=this.username.bind(this);
       
         this.password=this.password.bind(this);
         this.confirmpassword=this.confirmpassword.bind(this);
         this.Rolename=this.Rolename.bind(this);
         this.Register=this.Register.bind(this);
-    } 
+         
+ 
+  
+}
     
     Register=(e)=>{
+     
+    
         e.preventDefault();
         let errors={};
         var pattern=new RegExp( /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/);
@@ -36,25 +42,26 @@ class Register extends Component{
         if(this.state.username==""){
             
          formvalidstatus=false;
-         errors["username"]="*Please enter your name !";
+         errors["username"]="Please enter your name !";
+        
         }       
         if((this.state.password)==""){
           
             formvalidstatus=false;
-            errors["password"]="*Please enter your password !";
+            errors["password"]="Please enter your password !";
         } else if(!pattern.test(this.state.password)){
             formvalidstatus=false;
-            errors["password"]="* Password must include 4 characters, one upper case , one lower case and one numeric digit.";
+            errors["password"]=" Password must include 4 characters, one upper case , one lower case and one numeric digit.";
           }
          if((this.state.confirmpassword)==""){
           
             formvalidstatus=false;
-            errors["confirmpassword"]="*Please enter your confirmpassword !";
+            errors["confirmpassword"]="Please enter your confirmpassword !";
         }
           
           if(this.state.password != this.state.confirmpassword){
             formvalidstatus=false;
-            errors["confirmpassword"]="*Passwords do not match !";
+            errors["confirmpassword"]="Passwords do not match !";
           }
           
       
@@ -62,12 +69,14 @@ class Register extends Component{
       if((this.state.Rolename)==""){
           
         formvalidstatus=false;
-        errors["Rolename"]="*Please select the Role !";
+        errors["Rolename"]="Please select the Role !";
+        
     }
 
 
       this.setState({
           errors:errors
+          
       });
       if(formvalidstatus==true){
         let user={username:this.state.username,
@@ -81,8 +90,9 @@ class Register extends Component{
                         window.location="/";
                         localStorage.setItem('Registerstatus',true);
                         
-                        
+                        alert('register success')
                     });
+                   
 
     }
    }
@@ -125,7 +135,7 @@ class Register extends Component{
                 <label id="Rolename" >Rolename</label>
                 <select onChange={(e)=>this.Rolename(e)} name="Rolename">
                     
-                <option value=''>Role</option>
+                <option value=''>select</option>
 
                       <option value='HR'>HR</option>
                       <option value='Recruitor'>Recruiter</option>
