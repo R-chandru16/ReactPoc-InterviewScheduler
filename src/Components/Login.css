@@ -1,0 +1,40 @@
+.addformlog {
+    width: 400px;
+    height: 400px;
+    margin-left: 567px;
+    margin-top:92px;
+    justify-content: center;
+    background: #fff;
+    border: 7px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
+    border-radius: 8px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+}
+
+.login > form input {
+    border-radius: 20px;
+    border: 2px solid lightgrey;
+    outline: none;
+    color: #1d2129;
+    margin: 2% 0;
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+}
+#username{
+    padding-right: 70px;
+    margin-top: 2px;
+}
+#log{
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-right:7px;
+}
+.errorMsg{
+
+    color: red;
+
+}
