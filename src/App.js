@@ -1,5 +1,7 @@
 
 import './App.css';
+
+
 import { BrowserRouter ,Route,Routes,Link} from 'react-router-dom';
 import Register from './Components/Register';
 
@@ -10,6 +12,7 @@ import Dashboard from './Components/Dashboard';
 import { useState } from 'react';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Sidebar from './Components/Sidebar';
  toast.configure();
 
 
@@ -71,6 +74,10 @@ function App() {
       <Route path='/' element={<Login/>}></Route>
 
       <Route path='/Dashboard' element={<Dashboard/>}></Route>
+
+      <Route path='/side' element={<Sidebar/>}></Route>
+      
+      
       
      </Routes>
        
