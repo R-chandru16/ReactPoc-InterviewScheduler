@@ -33,7 +33,7 @@ return (
 
       <li>
            <a class="s-sidebar__nav-link" href="#0">
-              <i></i><em>panel</em><FaUserAlt />
+              <i></i><em><NavLink to="/register">Panel</NavLink></em><FaUserAlt />
            </a>
         </li>
     
