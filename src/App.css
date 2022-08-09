@@ -57,8 +57,9 @@ ul{
 }
 .nav
 {
-  background-image: linear-gradient(to right,#27caad,#83b687);
+  background-image: #043a63de;
   box-shadow: 0 0.5px 2px 0#043a63de;
+  background:#243e56;
   
 }
  .App {
@@ -69,5 +70,5 @@ ul{
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png");
+  /* background-image: url("https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png"); */
 }

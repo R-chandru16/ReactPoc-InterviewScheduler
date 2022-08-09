@@ -16,6 +16,7 @@
  em {
     font-style:normal;
     justify-content: center;
+    color: white;
  }
  
  a {
@@ -164,6 +165,14 @@
 li{
 justify-content: center;
 }
+
+i{
+   color:white;
+}
+
+/* .title{
+   font-size: 20px;
+} */
 
  }
  

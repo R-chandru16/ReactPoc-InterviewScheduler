@@ -8,6 +8,8 @@ import Register from './Components/Register';
 import pic from "./images/kanini.webp";
 import Login from './Components/Login';
 import Dashboard from './Components/Dashboard';
+import Job from './Components/Job/Job';
+
 
 import { useState } from 'react';
 import {toast} from 'react-toastify';
@@ -55,7 +57,7 @@ function App() {
                    
                     <Link to={"/"} className='logo1'><li className='logo2' onClick={Logout}>Logout</li>
                     </Link>
-                    <li className='logo2' >Hello! {localStorage.getItem('useremailid')}</li>
+                    <li className='logo2' >Hello {localStorage.getItem('useremailid')} !</li>
                   
                    
 
@@ -76,6 +78,9 @@ function App() {
       <Route path='/Dashboard' element={<Dashboard/>}></Route>
 
       <Route path='/side' element={<Sidebar/>}></Route>
+
+      <Route path='/job' element={<Job/>}></Route>
+
       
       
       
