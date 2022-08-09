@@ -12,10 +12,7 @@ return (
     <div class="s-layout">
 
 <div class="s-layout__sidebar">
-  <a class="s-sidebar__trigger" href="#0">
-     <i class="fa fa-heart"></i>
-  </a>
-
+  
 
 
                 
@@ -56,7 +53,7 @@ return (
                                 </svg>
 
                             </i>
-              <i></i><em>Candidate</em>
+                            <i></i><NavLink to="/Candidate"> <em>Candidate</em></NavLink>
               
            </a>
         </li>
@@ -88,7 +85,7 @@ return (
                                 </svg>
 
                             </i>
-              <i></i><NavLink to="/register"><em>Panel</em></NavLink>
+                            <i></i><NavLink to="/panel"> <em>Panel</em></NavLink>
            </a>
         </li>
     

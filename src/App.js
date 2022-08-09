@@ -15,6 +15,8 @@ import { useState } from 'react';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from './Components/Sidebar';
+import Candidate from './Components/Candidate/Candidate';
+import Panel from './Components/Panel/Panel';
  toast.configure();
 
 
@@ -50,7 +52,9 @@ function App() {
        
       )}
       {log  &&(
+        
         <>
+         
            <ul>          
                     <li className="logo"><img src={pic}></img></li>
                   
@@ -77,6 +81,10 @@ function App() {
 
       <Route path='/Dashboard' element={<Dashboard/>}></Route>
 
+      <Route path='/Candidate' element={<Candidate/>}></Route>
+      <Route path='/Panel' element={<Panel/>}></Route>
+
+
       <Route path='/side' element={<Sidebar/>}></Route>
 
       <Route path='/job' element={<Job/>}></Route>
@@ -85,10 +93,13 @@ function App() {
       
       
      </Routes>
-       
+        
+     
      </div>
-   
+    
+     
     </BrowserRouter>
+    
     <footer class="footer" >
     <div className="footer-copyright text-center py-2">
        &copy;   InterviewScheduler

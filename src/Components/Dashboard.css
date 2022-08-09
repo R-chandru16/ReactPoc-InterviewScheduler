@@ -7,6 +7,40 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+  
+  /* Style the body */
+  body {
+    font-family: Arial;
+    margin: 0;
+  }
+  
+
+
+  
+  /* Column container */
+  .row {  
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Create two unequal columns that sits next to each other */
+  /* Sidebar/left column */
+  .side {
+    flex: 16.2%;
+    background-color: #f1f1f1;
+    padding: 20px;
+  }
+  
+  /* Main column */
+  .main {
+    flex: 83.8%;
+    background-color: white;
+    padding: 20px;
+  }
+  
+
+
+
 
 .sidebar {
     position: fixed;

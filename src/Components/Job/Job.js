@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import Sidebar from '../Sidebar';
 
 
 class Job extends Component{
     render(){
         return(
-
-        <div class="row" className="mb-2 pageheading">
+            <div class="row">
+                 <div class="side">
+            <Sidebar />
+        </div>
+        <div class="main">
+        <div class="row" className="mb-5 pageheading">
 
 <div className="container">
         <h2 className="title">ADD JOB</h2>
@@ -64,6 +69,8 @@ class Job extends Component{
         </div>
 </form>
 </div>
+        </div>
+        </div>
         </div>
 
 

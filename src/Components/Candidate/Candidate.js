@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { Routes } from 'react-router-dom';
-import'./Dashboard.css'
-import './Sidebar.js'
-import Sidebar from './Sidebar.js';
+import Sidebar from '../Sidebar';
+import '../Dashboard.css';
 
 
-class Dashboard extends Component {
+class Candidate extends Component {
 
 render() {
 return (
     <div class="row">
         <div class="side">
-            <Sidebar />
+        <Sidebar />
         </div>
         <div class="main">
 <div class="row" className="mb-2 pageheading">
     
   <br></br>
-<h3><strong>HR Dashboard</strong></h3>
-
+<h3><strong>HR Candidate</strong></h3>
 <br></br>
 
 <div class="home-content">
@@ -107,4 +105,4 @@ return (
 );
 }
 }
-export default Dashboard;
+export default Candidate;
