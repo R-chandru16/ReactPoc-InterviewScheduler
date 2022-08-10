@@ -1,9 +1,9 @@
 
 import './App.css';
 
-
 import { BrowserRouter ,Route,Routes,Link} from 'react-router-dom';
 import Register from './Components/Register';
+
 
 import pic from "./images/kanini.webp";
 import Login from './Components/Login';
@@ -17,6 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from './Components/Sidebar';
 import Candidate from './Components/Candidate/Candidate';
 import Panel from './Components/Panel/Panel';
+import JobService from './Services/JobService';
  toast.configure();
 
 
@@ -27,6 +28,8 @@ function App() {
     localStorage.removeItem('Resgisterstatus');
     localStorage.removeItem('Deletestatus');
     localStorage.removeItem('Updatestatus');
+    localStorage.removeItem('Jobstatus');
+
     window.location.reload();
     window.location="/";
   }
