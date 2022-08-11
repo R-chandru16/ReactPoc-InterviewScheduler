@@ -1,68 +1,63 @@
-import React, { Component } from 'react';
-import Sidebar from '../Sidebar';
-import 'react-toastify/dist/ReactToastify.css';
-import JobService from "../../Services/JobService";
-import {Link} from 'react-router-dom';
-import '../Create.css';
+import React, { Component } from "react";
 
+
+import JobService from "../../Services/JobService";
+import './Job.css';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 
 class Job extends Component{
-
     constructor(props){
         super(props)
         this.state={
-            JobID:'',
-            JobRole:'',
+            jobId:'',
+            jobRole:'',
            
-            Available:0,
-          
+        
+            available:0,
             errors:{}   
             
         }
      
-        this.JobID=this.JobID.bind(this);
+        this.jobId=this.jobId.bind(this);
       
-        this.JobRole=this.JobRole.bind(this);
-        this.Available=this.Available.bind(this);
-        this.saveJob=this.saveJob.bind(this);
-
+        this.jobRole=this.jobRole.bind(this);
+   
+        this.available=this.available.bind(this);
+        this.Addjob=this.Addjob.bind(this);
+         
  
   
-}
-    
-saveJob=(e)=>{
+}    
+    Addjob=(e)=>{
      
     
-        e.preventDefault();
+       e.preventDefault();
         let errors={};
-        var pattern=new RegExp( /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/);
+       // var pattern=new RegExp( /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/);
       // var patt=new RegExp(/\d$/);        
         let formvalidstatus=true;  
          
-        if(this.state.JobID==""){
+        if(this.state.jobId==""){
             
          formvalidstatus=false;
-         errors["JobID"]="Please enter Job ID !";
+         errors["jobId"]="Please enter your jobid !";
         
         }       
-        if((this.state.JobRole)==""){
+        if((this.state.jobRole)==""){
           
             formvalidstatus=false;
-            errors["JobRole"]="Please enter JobRole !";
-
-        } else if(!pattern.test(this.state.JobRole)){
-            formvalidstatus=false;
-            errors["JobRole"]=" JobRole must include 4 characters, one upper case , one lower case and one numeric digit.";
-          }
-         
+            errors["jobRole"]="Please enter your jobrole!";
+        } 
+       
           
       
       
-      if((this.state.Available)==""){
+      if((this.state.available)==0){
           
         formvalidstatus=false;
-        errors["Available"]="Please enter Available Seats !";
+        errors["available"]="Please select the available !";
         
     }
 
@@ -72,18 +67,25 @@ saveJob=(e)=>{
           
       });
       if(formvalidstatus==true){
-        let job={JobID:this.state.JobID,
+    
+        let jobc={jobId:this.state.jobId,
                     
-                      JobRole:this.state.JobRole,
-                      Available:this.state.Available,
+                    jobRole:this.state.jobRole,
+                
+                      available:parseInt(this.state.available),
                     };
-                    console.log('job=>'+JSON.stringify(job));
-
-                    JobService.addJob(job).then(res=>{
-                        window.location="/job";
-                        localStorage.setItem('Jobstatus',true);
+        
+                    console.log('jobc=>'+jobc.jobId+ " " + jobc.jobRole
+                     + " " + jobc.available);
+                    
+                     console.log('jobc=>'+JSON.stringify(jobc));
+                    
+                    JobService.Addjob(jobc).then(res=>{
                         
-                        alert('Job added successfully')
+                        window.location="/register";
+                        localStorage.setItem('Jobstatus',true);
+                       
+                        alert('Job Added successfully')
                     });
                    
 
@@ -91,100 +93,49 @@ saveJob=(e)=>{
    }
 
     
-     JobID=(event)=>{
-        this.setState({JobID:event.target.value});
+     jobId=(event)=>{
+        this.setState({jobId:event.target.value});
      }
     
-     JobRole=(event)=>{
-        this.setState({JobRole:event.target.value});
+     jobRole=(event)=>{
+        this.setState({jobRole:event.target.value});
      }
      
-     Available=(event)=>{
-        this.setState({Available:event.target.value});
+     available=(event)=>{
+        this.setState({available:event.target.value});
      }
      cancel(){
-        window.location="/Login";
+        window.location="/";
      }
 
-    render(){
+     render(){
         return(
-            <div class="row">
-                 <div class="side">
-            <Sidebar />
+            <div>
+                  
+            <form className="addformjob">
+                <h3>AddJob</h3><br></br>
+
+                <label id="jobId" >JobId</label>
+                <input  id="jobId" type="text" name="jobId"  onChange={(e)=> this.jobId(e)}></input><br></br>
+                <div className="errorMsg">{this.state.errors.jobId}</div>
+              
+                <label id="jobRole">JobRole</label>
+                <input  id="jobRole" type="text"  name="jobRole" onChange={(e)=>this.jobRole(e)}></input><br></br>
+                <div className="errorMsg">{this.state.errors.jobRole}</div>
+
+
+                <label id="available">Available</label>
+                <input  id="available" type="number"  name="available" onChange={(e)=>this.available(e)}></input><br></br>
+                <div className="errorMsg">{this.state.errors.available}</div>
+              
+                <button id="jobb" className="btn btn-success" onClick={this.Addjob}>AddJob</button>
+                <br></br>
+              
+             
+            </form>
         </div>
-        <div class="main">
-        <div class="row" className="mb-5 pageheading">
-
-<div className="container">
-        <h2 className="title">ADD JOB</h2>
-</div>
-
-<div className="container">
-
-<form className="addformjob" >
-    <div  className="text-danger"></div>
-    <div className="form-group has-success">
-        <label className="control-label col-sm-2" >Job ID</label>
-
-        <div className="col-sm-8">
-
-            <input  className="form-control" type="text" placeholder="Enter Job ID" onChange={(e)=> this.JobID(e)} />
-            <div className="errorMsg">{this.state.errors.JobID}</div>
-        </div>
-
-    </div>
-    <div className="form-group has-success">
-        <label className="control-label col-sm-2" >Job Role</label>
-
-        <div className="col-sm-8">
-
-            <input  className="form-control" type="text" placeholder="Enter Job Role" onChange={(e)=> this.JobRole(e)} />
-            <div className="errorMsg">{this.state.errors.JobRole}</div>
-        </div>
-
-    </div>
-    <div className="form-group has-success">
-        <label className="control-label col-sm-2" >Available Seats</label>
-        <div className="col-sm-8">
-            <input  className="form-control" type="number" placeholder="Enter Available Seats" onChange={(e)=> this.Available(e)} />
-
-            <div className="errorMsg">{this.state.errors.Available}</div>
-        </div>
-
-    </div>
-<br></br>
-        <div className="row">
-
-            {/* <div className="col-sm-6">
-                <div className="form-group has-success">
-                    <input className="btn btn-success" type="submit" value="Submit" onClick={this.saveJob} />
-                </div>
-            </div> */}
-
-<button className="btn btn-warning buttonc" onClick={this.saveJob}>Create</button>
-<Link to={'/'}><button className="btn btn-primary butc" type="submit" onClick={()=>{window.location='/dashboard'}}>Back</button>
-            </Link> 
-
-
-            <div className="col-sm-6">
-                <div className="form-group has-success">
-                    <a  className="btn btn-dark" >Back</a>
-                </div>
-            </div>
-
-
-        </div>
-</form>
-</div>
-        </div>
-
-        </div>
-        </div>
-
-
-
-        );
-    }
+            
+        )
+     }
 }
-
-export default Job;
+export default Job

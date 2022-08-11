@@ -17,7 +17,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from './Components/Sidebar';
 import Candidate from './Components/Candidate/Candidate';
 import Panel from './Components/Panel/Panel';
-import JobService from './Services/JobService';
  toast.configure();
 
 
@@ -25,7 +24,7 @@ function App() {
  const [log,setLog]=useState(localStorage.getItem('Loginsuccess'));
   const Logout=()=>{
     localStorage.removeItem('Loginsuccess');
-    localStorage.removeItem('Resgisterstatus');
+    localStorage.removeItem('Registerstatus');
     localStorage.removeItem('Deletestatus');
     localStorage.removeItem('Updatestatus');
     localStorage.removeItem('Jobstatus');

@@ -1,19 +1,20 @@
 import axios from "axios";
 
-const Employee_Baseurl="https://localhost:44348/api/Users";
+const User_Baseurl="https://localhost:44348/api/Users";
+
 
 class AuthService{
   
    
     login(user){
-        return axios.post(Employee_Baseurl+"/LoginUser",user);
+        return axios.post(User_Baseurl+"/LoginUser",user);
     }
 
     Register(user){
-        return axios.post(Employee_Baseurl+"/AddUser",user);
+        return axios.post(User_Baseurl+"/AddUser",user);
     }
 
-  
+   
 }
 
 export default new AuthService()
