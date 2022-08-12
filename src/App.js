@@ -9,6 +9,8 @@ import pic from "./images/kanini.webp";
 import Login from './Components/Login';
 import Dashboard from './Components/Dashboard';
 import Job from './Components/Job/Job';
+import ViewJob from './Components/Job/ViewJob';
+import UpdateJob from './Components/Job/UpdateJob';
 
 
 import { useState } from 'react';
@@ -90,6 +92,10 @@ function App() {
       <Route path='/side' element={<Sidebar/>}></Route>
 
       <Route path='/job' element={<Job/>}></Route>
+      <Route path='/viewjob' element={<ViewJob/>}></Route>
+      <Route path='/updatejob' element={<UpdateJob/>}></Route>
+
+
 
       
       

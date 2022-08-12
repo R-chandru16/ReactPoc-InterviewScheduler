@@ -101,7 +101,7 @@ return (
                                 </svg>
 
                             </i>
-              <i></i><NavLink to="/Job">
+              <i></i><NavLink to="/viewjob">
               
               <em>Job</em></NavLink>
            </a>

@@ -3,17 +3,18 @@ import Sidebar from '../Sidebar';
 
 import JobService from "../../Services/JobService";
 // import '../css/Create.css';
+
 import './Job.css';
-
-
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
 
-class Job extends Component{
+
+class UpdateJob extends React.Component{
     constructor(props){
         super(props)
         this.state={
+            Id:'',
             jobId:'',
             jobRole:'',
            
@@ -22,18 +23,36 @@ class Job extends Component{
             errors:{}   
             
         }
-     
+
+        this.Id=this.Id.bind(this);
+
         this.jobId=this.jobId.bind(this);
       
         this.jobRole=this.jobRole.bind(this);
    
         this.available=this.available.bind(this);
-        this.Addjob=this.Addjob.bind(this);
-         
+        this.UpdateJob=this.UpdateJob.bind(this);
+        this.cancel=this.cancel.bind(this);
+
  
   
 }    
-    Addjob=(e)=>{
+
+componentDidMount(){
+        
+    JobService.GetJobById(localStorage.getItem('id')).then((res)=>{
+        let job=res.data;
+        this.setState({
+            Id:localStorage.getItem('id')
+            ,jobId: job.jobId,
+
+            jobRole:job.jobRole,
+            available: job.available
+        });
+    });
+}
+
+    UpdateJob=(e)=>{
      
     
        e.preventDefault();
@@ -83,33 +102,36 @@ class Job extends Component{
                     
                      console.log('jobc=>'+JSON.stringify(jobc));
                     
-                    JobService.Addjob(jobc).then(res=>{
+                    JobService.UpdateJob(jobc).then(res=>{
                         
                         window.location="/register";
-                        localStorage.setItem('Jobstatus',true);
+                        localStorage.setItem('Updatestatus',true);
                        
-                        alert('Job Added successfully')
+                        alert('Job Updated successfully')
                     });
                    
 
     }
    }
 
-    
-     jobId=(event)=>{
+   Id(event){
+    this.setState({Id:event.target.value});
+ } 
+
+     jobId(event){
         this.setState({jobId:event.target.value});
      }
     
-     jobRole=(event)=>{
+     jobRole(event){
         this.setState({jobRole:event.target.value});
      }
      
-     available=(event)=>{
+     available(event){
         this.setState({available:event.target.value});
      }
      cancel(){
-        window.location="/";
-     }
+        alert( window.location.replace('http://localhost:3000/'))
+    }
 
      render(){
         return(
@@ -118,31 +140,33 @@ class Job extends Component{
             <Sidebar />
         </div>
             <form className="addformjob">
-                <h2><strong>Add Job</strong></h2>
+                <h2><strong>Update Job</strong></h2>
         {/* <div className="content"> */}
+                <input id="Id" type="hidden" name="Id"  value={ this.state.Id} onChange={this.Id}></input><br></br>
                 <label>Job Id</label>
-                <input id="jobId" type="text" name="jobId"  onChange={(e)=> this.jobId(e)}></input><br></br>
+                <input id="jobId" type="text" name="jobId" disabled="true" value={ this.state.jobId} onChange={this.jobId}></input><br></br>
                 <div className="errorMsg">{this.state.errors.jobId}</div>
               <br></br>
                 <label >Job Role</label>
-                <input  id="jobRole" type="text"  name="jobRole" onChange={(e)=>this.jobRole(e)}></input><br></br>
+                <input  id="jobRole" type="text"  name="jobRole" value={ this.state.jobRole} onChange={this.jobRole}></input><br></br>
                 <div className="errorMsg">{this.state.errors.jobRole}</div>
 
                 <br></br>
 
                 <label >Available</label>
-                <input  id="available" type="number"  name="available" onChange={(e)=>this.available(e)}></input><br></br>
+                <input  id="available" type="number"  name="available" value={ this.state.available} onChange={this.available}></input><br></br>
                 <div className="errorMsg">{this.state.errors.available}</div>
                 <br></br>
                 <br></br>
         {/* </div> */}
 
-                <button id="jobb" className="btn btn-success" onClick={this.Addjob}>Create</button>
+                <button id="jobb" className="btn btn-success" onClick={(e)=>this.UpdateJob(e)}>Update</button>
                 <br></br>
                 <br></br>
                 <Link to={'/'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
             </Link> 
                 <br></br>
+              
              
             </form>
         </div>
@@ -150,4 +174,4 @@ class Job extends Component{
         )
      }
 }
-export default Job
+export default UpdateJob

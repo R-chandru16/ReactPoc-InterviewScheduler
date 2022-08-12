@@ -1,6 +1,6 @@
 .addformjob{
     width: 1000px;
-    height: 550px;
+    height: 500px;
     margin-left: 430px;
     margin-top:57px;
     justify-content: center;
@@ -12,20 +12,13 @@
     align-items: center;
     text-align: center;
 }
-h2{
+h3{
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 2.2em;
-    line-height: 48px;
-    padding-bottom: 48px;
-    color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left,#f4524d 0%,#5543ca 100%) !important;
-    background: -webkit-linear-gradient(left,#f4524d 0%,#5543ca 100%) !important;
-    background: linear-gradient(to right,#f4524d 0%,#5543ca 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    margin-top:20px;
+    font-family: sans-serif;
+    background-image: linear-gradient(to bottom right,#003060,#055C9D);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
 }
 label,input,select{
     width: 240px;
@@ -54,17 +47,8 @@ label{
 #jobb{
     justify-content: center;
     margin-top: 16px;
-    margin-right:3px;display: inline-block;
-    background-color: #000;
-    background-image: linear-gradient(125deg,#a72879,#064497);
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 16px;
-    padding: 8px 16px;
-    border: none;
-    width: 200px;
-    cursor: pointer;
+    margin-right:3px;
+    margin-bottom: 3px;
 }
 .errorMsg{
 
