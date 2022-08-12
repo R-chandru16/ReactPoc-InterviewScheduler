@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 import React, { Component } from "react";
 import Sidebar from '../Sidebar';
 import JobService from "../../Services/JobService";
@@ -186,13 +195,13 @@ class ViewJob extends React.Component{
                
                 <div className="addbtn">
                     {/* <button className="add" onClick={this.addJob}>Add Job</button> */}
-                    <Link to={'/'}><button className="btn btn-outline-success" type="submit" onClick={()=>{window.location='/job'}}>Add Job</button>
-            </Link>
+                    <button className="btn btn-outline-success" type="submit" onClick={()=>{window.location='/job'}}>Add Job</button>
+       
                 </div>
-                <div className="addbtn">
+                <div className="searchbtn">
                        <input type="text" placeholder="Search here" onChange={(e)=>this.searchItems(e)}/>
                 </div>
-               
+               .
                 <br></br>
                 <br></br>
                  <br></br>
@@ -240,3 +249,12 @@ class ViewJob extends React.Component{
     }
 }
 export default ViewJob
+
+
+
+
+
+
+
+
+

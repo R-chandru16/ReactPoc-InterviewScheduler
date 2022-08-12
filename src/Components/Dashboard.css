@@ -1,3 +1,5 @@
+
+
 /* Googlefont Poppins CDN Link  */
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
 
@@ -27,7 +29,7 @@
   /* Sidebar/left column */
   .side {
     flex: 16.2%;
-    background-color: #f1f1f1;
+  
     padding: 20px;
   }
   
@@ -434,3 +436,19 @@ nav .profile-details i {
         color: #333;
     }
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -123,14 +123,15 @@ class Register extends Component{
 
                 <label id="username" >UserName</label>
                 <input  id="username" type="text" name="name"  onChange={(e)=> this.username(e)}></input><br></br>
-                <div className="errorMsg">{this.state.errors.username}</div>
+                <div className="errorMsgReg">{this.state.errors.username}</div>
               
                 <label id="password">Password</label>
                 <input  id="password" type="password"  name="password" onChange={(e)=>this.password(e)}></input><br></br>
-                <div className="errorMsg">{this.state.errors.password}</div>
+                <div className="errorMsgReg">{this.state.errors.password}</div>
                 <label id="confirmpassword">Confirm Password</label>
+                
                 <input  id="confirmpassword" type="password"  name="confirmpassword" onChange={(e)=>this.confirmpassword(e)}></input><br></br>
-                <div className="errorMsg">{this.state.errors.confirmpassword}</div>
+                <div className="errorMsgReg">{this.state.errors.confirmpassword}</div>
                 <label id="Rolename" >Rolename</label>
                 <select onChange={(e)=>this.Rolename(e)} name="Rolename">
                     
@@ -139,7 +140,7 @@ class Register extends Component{
                       <option value='HR'>HR</option>
                       <option value='Recruitor'>Recruiter</option>
                 </select><br></br>
-                <div className="errorMsg">{this.state.errors.Rolename}</div>
+                <div className="errorMsgReg">{this.state.errors.Rolename}</div>
                 <button id="reg" className="btn btn-success" onClick={this.Register}>Register</button>
                 <br></br>
                 <br></br>

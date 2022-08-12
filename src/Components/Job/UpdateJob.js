@@ -145,17 +145,17 @@ componentDidMount(){
                 <input id="Id" type="hidden" name="Id"  value={ this.state.Id} onChange={this.Id}></input><br></br>
                 <label>Job Id</label>
                 <input id="jobId" type="text" name="jobId" disabled="true" value={ this.state.jobId} onChange={this.jobId}></input><br></br>
-                <div className="errorMsg">{this.state.errors.jobId}</div>
+                <div className="errorMsgJob">{this.state.errors.jobId}</div>
               <br></br>
                 <label >Job Role</label>
                 <input  id="jobRole" type="text"  name="jobRole" value={ this.state.jobRole} onChange={this.jobRole}></input><br></br>
-                <div className="errorMsg">{this.state.errors.jobRole}</div>
+                <div className="errorMsgJob">{this.state.errors.jobRole}</div>
 
                 <br></br>
 
                 <label >Available</label>
                 <input  id="available" type="number"  name="available" value={ this.state.available} onChange={this.available}></input><br></br>
-                <div className="errorMsg">{this.state.errors.available}</div>
+                <div className="errorMsgJob">{this.state.errors.available}</div>
                 <br></br>
                 <br></br>
         {/* </div> */}
@@ -163,7 +163,7 @@ componentDidMount(){
                 <button id="jobb" className="btn btn-success" onClick={(e)=>this.UpdateJob(e)}>Update</button>
                 <br></br>
                 <br></br>
-                <Link to={'/'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
+                <Link to={'/viewjob'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
             </Link> 
                 <br></br>
               

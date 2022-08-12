@@ -122,17 +122,17 @@ class Job extends Component{
         {/* <div className="content"> */}
                 <label>Job Id</label>
                 <input id="jobId" type="text" name="jobId"  onChange={(e)=> this.jobId(e)}></input><br></br>
-                <div className="errorMsg">{this.state.errors.jobId}</div>
+                <div className="errorMsgJob">{this.state.errors.jobId}</div>
               <br></br>
                 <label >Job Role</label>
                 <input  id="jobRole" type="text"  name="jobRole" onChange={(e)=>this.jobRole(e)}></input><br></br>
-                <div className="errorMsg">{this.state.errors.jobRole}</div>
+                <div className="errorMsgJob">{this.state.errors.jobRole}</div>
 
                 <br></br>
 
                 <label >Available</label>
                 <input  id="available" type="number"  name="available" onChange={(e)=>this.available(e)}></input><br></br>
-                <div className="errorMsg">{this.state.errors.available}</div>
+                <div className="errorMsgJob">{this.state.errors.available}</div>
                 <br></br>
                 <br></br>
         {/* </div> */}
@@ -140,7 +140,7 @@ class Job extends Component{
                 <button id="jobb" className="btn btn-success" onClick={this.Addjob}>Create</button>
                 <br></br>
                 <br></br>
-                <Link to={'/'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
+                <Link to={'/job'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
             </Link> 
                 <br></br>
              

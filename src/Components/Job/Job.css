@@ -1,6 +1,6 @@
 .addformjob{
     width: 1000px;
-    height: 550px;
+    height: 580px;
     margin-left: 430px;
     margin-top:57px;
     justify-content: center;
@@ -51,6 +51,7 @@ label{
     padding-right: 70px;
 
 }
+
 #jobb{
     justify-content: center;
     margin-top: 16px;
@@ -66,9 +67,10 @@ label{
     width: 200px;
     cursor: pointer;
 }
-.errorMsg{
+.errorMsgJob{
 
     color: red;
+    margin-left: 34% !important;
 
 }
 #Jobid{

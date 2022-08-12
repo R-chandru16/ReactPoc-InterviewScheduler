@@ -114,10 +114,10 @@ class Login extends Component{
                 <label id="username" >Username</label>
            
                 <input  id="username" type="text" name="username"  value={this.state.username} onChange={(e)=> this.username(e)} ></input><br></br>
-                <div className="errorMsg">{this.state.errors.username}</div>
+                <div className="errorMsgLogin">{this.state.errors.username}</div>
                  <label id="password">Password</label>
                 <input  id="emppassw" type="password" name="password"    value={this.state.password}  onChange={(e)=>this.password(e)}></input><br></br>
-                <div className="errorMsg">{this.state.errors.password}</div>
+                <div className="errorMsgLogin">{this.state.errors.password}</div>
       
                 <button id="log" className="btn btn-success" onClick={this.login}>Login</button>
                 <br></br>
