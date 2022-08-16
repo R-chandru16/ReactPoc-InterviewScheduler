@@ -36,7 +36,9 @@ return (
                  </i>
             </div>
            
-              <i></i><em><strong>INTERVIEW SCHEDULER</strong></em>
+              {/* <i></i><em><strong>INTERVIEW SCHEDULER</strong></em> */}
+              <i></i><NavLink to="/dashboard"> <em><strong>INTERVIEW SCHEDULER</strong></em></NavLink>
+
               
            </a>
         </li>

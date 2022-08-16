@@ -198,9 +198,9 @@ class ViewJob extends React.Component{
                     <button className="btn btn-outline-success" type="submit" onClick={()=>{window.location='/job'}}>Add Job</button>
        
                 </div>
-                <div className="searchbtn">
+                {/* <div className="searchbtn">
                        <input type="text" placeholder="Search here" onChange={(e)=>this.searchItems(e)}/>
-                </div>
+                </div> */}
                .
                 <br></br>
                 <br></br>
@@ -211,7 +211,6 @@ class ViewJob extends React.Component{
                        
                     <thead className="dark">
                      <tr>
-                         {/* <th>Id</th> */}
                          <th>Job Id</th>
                          <th>Job Role</th>
                          <th>Available</th>
@@ -223,7 +222,6 @@ class ViewJob extends React.Component{
                      {
                      currentEmployees.map(items=>(
                          <tr key={items.Id}>
-                             {/* <td>{items.Id}</td> */}
                              <td>{items.jobId}</td>
                              <td>{items.jobRole}</td>
                              <td>{items.available}</td>
@@ -232,7 +230,7 @@ class ViewJob extends React.Component{
                          </tr>
                      ))}
                  </tbody>
-                    </table>
+                </table>
                     <div className="pagination">
                      {
                         pageNumbers.map((pageNum,index)=>(
@@ -241,9 +239,9 @@ class ViewJob extends React.Component{
                             </span>
                         ))
                      }
-                    </div>
-                
                 </div>
+                
+            </div>
                
         )
     }

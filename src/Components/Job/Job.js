@@ -38,8 +38,8 @@ class Job extends Component{
     
        e.preventDefault();
         let errors={};
-       // var pattern=new RegExp( /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/);
-      // var patt=new RegExp(/\d$/);        
+       var pattern=new RegExp( /^[0-9a-zA-Z]+$/);
+       var pat=new RegExp(/[a-zA-Z]/);
         let formvalidstatus=true;  
          
         if(this.state.jobId==""){
@@ -47,12 +47,26 @@ class Job extends Component{
          formvalidstatus=false;
          errors["jobId"]="Please enter your jobid !";
         
-        }       
+        }      
+        else if(!pattern.test(this.state.jobId)){
+            
+          formvalidstatus=false;
+          errors["jobId"]="Please enter only letters and numbers !";
+         
+         }   
+
+        
         if((this.state.jobRole)==""){
           
             formvalidstatus=false;
             errors["jobRole"]="Please enter your jobrole!";
         } 
+        else if(!pat.test(this.state.jobRole)){
+            
+          formvalidstatus=false;
+          errors["jobRole"]="Please enter only alphabets !";
+         
+         }   
        
           
       
@@ -85,7 +99,7 @@ class Job extends Component{
                     
                     JobService.Addjob(jobc).then(res=>{
                         
-                        window.location="/register";
+                        window.location="/viewjob";
                         localStorage.setItem('Jobstatus',true);
                        
                         alert('Job Added successfully')

@@ -139,9 +139,9 @@ componentDidMount(){
                    <div class="side">
             <Sidebar />
         </div>
-            <form className="addformjob">
+        <h2>Update Job</h2>
+            {/* <form className="addformjob">
                 <h2><strong>Update Job</strong></h2>
-        {/* <div className="content"> */}
                 <input id="Id" type="hidden" name="Id"  value={ this.state.Id} onChange={this.Id}></input><br></br>
                 <label>Job Id</label>
                 <input id="jobId" type="text" name="jobId" disabled="true" value={ this.state.jobId} onChange={this.jobId}></input><br></br>
@@ -158,7 +158,6 @@ componentDidMount(){
                 <div className="errorMsgJob">{this.state.errors.available}</div>
                 <br></br>
                 <br></br>
-        {/* </div> */}
 
                 <button id="jobb" className="btn btn-success" onClick={(e)=>this.UpdateJob(e)}>Update</button>
                 <br></br>
@@ -168,7 +167,7 @@ componentDidMount(){
                 <br></br>
               
              
-            </form>
+            </form> */}
         </div>
             
         )
