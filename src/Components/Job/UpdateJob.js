@@ -139,8 +139,7 @@ componentDidMount(){
                    <div class="side">
             <Sidebar />
         </div>
-        <h2>Update Job</h2>
-            {/* <form className="addformjob">
+            <form className="addformjob">
                 <h2><strong>Update Job</strong></h2>
                 <input id="Id" type="hidden" name="Id"  value={ this.state.Id} onChange={this.Id}></input><br></br>
                 <label>Job Id</label>
@@ -167,7 +166,7 @@ componentDidMount(){
                 <br></br>
               
              
-            </form> */}
+            </form>
         </div>
             
         )
