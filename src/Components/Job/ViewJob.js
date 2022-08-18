@@ -70,7 +70,7 @@ class ViewJob extends React.Component{
 
     editJob(id){
      localStorage.setItem('userid',id);
-      window.location='/updatejob';
+      window.location=`/updatejob/${id}`;
       
     }
     addJob(){

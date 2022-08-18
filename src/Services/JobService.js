@@ -18,8 +18,8 @@ class JobService{
         return axios.get(Job_Baseurl+"/GetJobByID?id="+id);
     }
 
-    UpdateJob(id){
-        return axios.put(Job_Baseurl+"/UpdateJob?id=",id);
+    UpdateJob(id, job){
+        return axios.put(Job_Baseurl+"/UpdateJob?id="+id,job);
     }
 
     DeleteJob(id)

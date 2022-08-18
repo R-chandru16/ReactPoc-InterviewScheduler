@@ -93,7 +93,7 @@ function App() {
 
       <Route path='/job' element={<Job/>}></Route>
       <Route path='/viewjob' element={<ViewJob/>}></Route>
-      <Route path='/updatejob' element={<UpdateJob/>}></Route>
+      <Route path='/updatejob/:id' element={<UpdateJob/>}></Route>
 
 
 

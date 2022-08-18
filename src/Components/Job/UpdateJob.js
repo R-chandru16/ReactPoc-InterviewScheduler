@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import Sidebar from '../Sidebar';
 
@@ -14,7 +15,7 @@ class UpdateJob extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            id:'',
+            id:0,
             jobId:'',
             jobRole:'',
            
@@ -39,7 +40,9 @@ class UpdateJob extends React.Component{
 }    
 
 componentDidMount(){
-        
+
+
+        console.log(this.props.match);
     JobService.GetJobById(localStorage.getItem('id')).then((res)=>{
         let job=res.data;
         this.setState({
@@ -90,7 +93,8 @@ componentDidMount(){
       });
       if(formvalidstatus==true){
     
-        let jobc={jobId:this.state.jobId,
+        let jobc={id:parseInt(this.state.id),
+            jobId:this.state.jobId,
                     
                     jobRole:this.state.jobRole,
                 
@@ -102,7 +106,7 @@ componentDidMount(){
                     
                      console.log('jobc=>'+JSON.stringify(jobc));
                     
-                    JobService.UpdateJob(jobc).then(res=>{
+                    JobService.UpdateJob(jobc.id,jobc).then(res=>{
                         
                         window.location="/viewjob";
                         localStorage.setItem('Updatestatus',true);
@@ -134,6 +138,7 @@ componentDidMount(){
     }
 
      render(){
+        // console.log(this.props.match.params);
         return(
             <div>
                    <div class="side">
