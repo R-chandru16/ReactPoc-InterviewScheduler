@@ -14,7 +14,7 @@ class UpdateJob extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            Id:'',
+            id:'',
             jobId:'',
             jobRole:'',
            
@@ -24,7 +24,7 @@ class UpdateJob extends React.Component{
             
         }
 
-        this.Id=this.Id.bind(this);
+        this.id=this.id.bind(this);
 
         this.jobId=this.jobId.bind(this);
       
@@ -43,7 +43,7 @@ componentDidMount(){
     JobService.GetJobById(localStorage.getItem('id')).then((res)=>{
         let job=res.data;
         this.setState({
-            Id:localStorage.getItem('id')
+            id:localStorage.getItem('id')
             ,jobId: job.jobId,
 
             jobRole:job.jobRole,
@@ -104,7 +104,7 @@ componentDidMount(){
                     
                     JobService.UpdateJob(jobc).then(res=>{
                         
-                        window.location="/register";
+                        window.location="/viewjob";
                         localStorage.setItem('Updatestatus',true);
                        
                         alert('Job Updated successfully')
@@ -114,8 +114,8 @@ componentDidMount(){
     }
    }
 
-   Id(event){
-    this.setState({Id:event.target.value});
+   id(event){
+    this.setState({id:event.target.value});
  } 
 
      jobId(event){
@@ -141,9 +141,11 @@ componentDidMount(){
         </div>
             <form className="addformjob">
                 <h2><strong>Update Job</strong></h2>
-                <input id="Id" type="hidden" name="Id"  value={ this.state.Id} onChange={this.Id}></input><br></br>
+                <input id="id"  name="id" value={ this.state.id} onChange={this.id}></input><br></br>
+
+
                 <label>Job Id</label>
-                <input id="jobId" type="text" name="jobId" disabled="true" value={ this.state.jobId} onChange={this.jobId}></input><br></br>
+                <input id="jobId" type="text" name="jobId"  value={ this.state.jobId} onChange={this.jobId}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.jobId}</div>
               <br></br>
                 <label >Job Role</label>

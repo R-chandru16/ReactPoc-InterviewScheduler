@@ -133,7 +133,7 @@ class ViewJob extends React.Component{
         let searchval=event.target.value.toLowerCase();
          
         let res=this.state.jobs.filter(job=>{ 
-            return(((job.Id.toString()).indexOf(searchval)!==-1)||
+            return(((job.id.toString()).indexOf(searchval)!==-1)||
             ((job.jobId.toLowerCase()).indexOf(searchval)!==-1)||
             ((job.jobRole.toLowerCase()).indexOf(searchval)!==-1)||
             ((job.available.toString()).indexOf(searchval)!==-1))
@@ -221,12 +221,12 @@ class ViewJob extends React.Component{
                  <tbody>
                      {
                      currentEmployees.map(items=>(
-                         <tr key={items.Id}>
+                         <tr key={items.id}>
                              <td>{items.jobId}</td>
                              <td>{items.jobRole}</td>
                              <td>{items.available}</td>
-                             <td><button className="btn btn-primary" onClick={()=>this.editJob(items.Id)}>Edit</button></td>
-                             <td><button className="btn btn-danger"  onClick={()=>this.deleteButton(items.Id)}>Delete</button></td>
+                             <td><button className="btn btn-primary" onClick={()=>this.editJob(items.id)}>Edit</button></td>
+                             <td><button className="btn btn-danger"  onClick={()=>this.deleteButton(items.id)}>Delete</button></td>
                          </tr>
                      ))}
                  </tbody>
