@@ -43,7 +43,7 @@ componentDidMount(){
 
 
         console.log(this.props.match);
-    JobService.GetInterviewById(localStorage.getItem('id')).then((res)=>{
+    JobService.GetInterviewLevelById(localStorage.getItem('id')).then((res)=>{
         let lev=res.data;
         this.setState({
             id:localStorage.getItem('id')
@@ -140,11 +140,11 @@ componentDidMount(){
                 <input id="id"  name="id" value={ this.state.id} onChange={this.id}></input><br></br>
 
 
-                <label>level</label>
+                <label>Level</label>
                 <input id="level" type="text" name="level"  value={ this.state.level} onChange={this.level}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.level}</div>
               <br></br>
-                <label >levelDes</label>
+                <label >Level Description</label>
                 <input  id="levelDes" type="text"  name="levelDes" value={ this.state.levelDes} onChange={this.levelDes}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.levelDes}</div>
 

@@ -33,11 +33,20 @@ class JobService{
     }
     
 
-    GetInterviewById(id){
+    GetInterviewLevelById(id){
         return axios.get(Job_Baseurl+"/GetInterviewLevelByID?id="+id);
     }
     UpdateInterview(id,job){
         return axios.post(Job_Baseurl+"/UpdateInterviewLevel"+id,job);
+    }
+
+    GetAllInterviewLevels(){
+        return axios.get(Job_Baseurl+"/GetAllInterviewLevels");
+    }
+
+    DeleteInterviewLevel(id)
+    {
+        return axios.delete(Job_Baseurl+"/DeleteInterviewLevel?id="+id);
     }
   
 }

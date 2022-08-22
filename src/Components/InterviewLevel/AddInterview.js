@@ -80,7 +80,7 @@ class Interview extends Component{
                     
                     JobService.AddInterview(lev).then(res=>{
                         
-                        window.location="/viewInterview";
+                        window.location="/viewlevel";
                         localStorage.setItem('Interviewstatus',true);
                        
                         alert('InterviewLevel Added successfully')
@@ -110,13 +110,13 @@ class Interview extends Component{
             <Sidebar />
         </div>
             <form className="addformjob">
-                <h2><strong>Add AddInterviewLevel</strong></h2>
+                <h2><strong>Add Interview Level</strong></h2>
         {/* <div className="content"> */}
-                <label>level</label>
+                <label>Level</label>
                 <input id="level" type="text" name="level"  onChange={(e)=> this.level(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.level}</div>
               <br></br>
-                <label >levelDes</label>
+                <label >Level Description</label>
                 <input  id="jobRole" type="text"  name="jobRole" onChange={(e)=>this.levelDes(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.levelDes}</div>
 
@@ -129,7 +129,7 @@ class Interview extends Component{
                 <button id="jobb" className="btn btn-success" onClick={this.AddInterview}>Create</button>
                 <br></br>
                 <br></br>
-                <Link to={'/job'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
+                <Link to={'/job'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewlevel'}}>Back</button>
             </Link> 
                 <br></br>
              

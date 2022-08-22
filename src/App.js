@@ -22,6 +22,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from './Components/Sidebar';
 import Candidate from './Components/Candidate/Candidate';
 import Panel from './Components/Panel/Panel';
+import ViewLevel from './Components/InterviewLevel/ViewLevel';
  toast.configure();
 
 
@@ -100,6 +101,8 @@ function App() {
       
       <Route path='/interview' element={<Interview/>}></Route>
       <Route path='/updateinterview/:id' element={<UpdateInterview/>}></Route>
+      <Route path='/viewlevel' element={<ViewLevel/>}></Route>
+
 
 
       
