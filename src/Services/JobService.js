@@ -27,6 +27,18 @@ class JobService{
         return axios.delete(Job_Baseurl+"/DeleteJob?id="+id);
     }
 
+
+    AddInterview(job){
+        return axios.post(Job_Baseurl+"/AddInterviewLevel",job);
+    }
+    
+
+    GetInterviewById(id){
+        return axios.get(Job_Baseurl+"/GetInterviewLevelByID?id="+id);
+    }
+    UpdateInterview(id,job){
+        return axios.post(Job_Baseurl+"/UpdateInterviewLevel"+id,job);
+    }
   
 }
 

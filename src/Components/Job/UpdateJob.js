@@ -146,8 +146,9 @@ componentDidMount(){
         </div>
             <form className="addformjob">
                 <h2><strong>Update Job</strong></h2>
+                <label>Id</label>
                 <input id="id"  name="id" value={ this.state.id} onChange={this.id}></input><br></br>
-
+                <div className="errorMsgJob">{this.state.errors.id}</div>
 
                 <label>Job Id</label>
                 <input id="jobId" type="text" name="jobId"  value={ this.state.jobId} onChange={this.jobId}></input><br></br>

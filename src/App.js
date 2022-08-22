@@ -11,6 +11,9 @@ import Dashboard from './Components/Dashboard';
 import Job from './Components/Job/Job';
 import ViewJob from './Components/Job/ViewJob';
 import UpdateJob from './Components/Job/UpdateJob';
+import UpdateInterview from './Components/InterviewLevel/UpdateInterview';
+
+import Interview from './Components/InterviewLevel/AddInterview';
 
 
 import { useState } from 'react';
@@ -94,6 +97,13 @@ function App() {
       <Route path='/job' element={<Job/>}></Route>
       <Route path='/viewjob' element={<ViewJob/>}></Route>
       <Route path='/updatejob/:id' element={<UpdateJob/>}></Route>
+      
+      <Route path='/interview' element={<Interview/>}></Route>
+      <Route path='/updateinterview/:id' element={<UpdateInterview/>}></Route>
+
+
+      
+
 
 
 

@@ -117,7 +117,7 @@ return (
                                 </svg>
 
                             </i>
-              <i></i><NavLink to="/register"><em>Interview Level</em></NavLink>
+              <i></i><NavLink to="/interview"><em>Interview Level</em></NavLink>
            </a>
         </li>
         <li>
