@@ -11,7 +11,6 @@ import Dashboard from './Components/Dashboard';
 import Job from './Components/Job/Job';
 import ViewJob from './Components/Job/ViewJob';
 import UpdateJob from './Components/Job/UpdateJob';
-import UpdateInterview from './Components/InterviewLevel/UpdateInterview';
 
 import Interview from './Components/InterviewLevel/AddInterview';
 
@@ -23,6 +22,7 @@ import Sidebar from './Components/Sidebar';
 import Candidate from './Components/Candidate/Candidate';
 import Panel from './Components/Panel/Panel';
 import ViewLevel from './Components/InterviewLevel/ViewLevel';
+import UpdateLevel from './Components/InterviewLevel/UpdateLevel';
  toast.configure();
 
 
@@ -100,7 +100,7 @@ function App() {
       <Route path='/updatejob/:id' element={<UpdateJob/>}></Route>
       
       <Route path='/interview' element={<Interview/>}></Route>
-      <Route path='/updateinterview/:id' element={<UpdateInterview/>}></Route>
+      <Route path='/updatelevel/:id' element={<UpdateLevel/>}></Route>
       <Route path='/viewlevel' element={<ViewLevel/>}></Route>
 
 

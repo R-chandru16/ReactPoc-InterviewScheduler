@@ -4,23 +4,20 @@ import Sidebar from '../Sidebar';
 
 import JobService from "../../Services/JobService";
 // import '../css/Create.css';
-
-//import './Job.css';
+import './../Job/Job.css';
+// import '../../Job.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
 
 
-class UpdateInterview extends React.Component{
+class UpdateLevel extends React.Component{
     constructor(props){
         super(props)
         this.state={
             id:0,
             level:'',
             levelDes:'',
-           
-        
- 
             errors:{}   
             
         }
@@ -31,8 +28,7 @@ class UpdateInterview extends React.Component{
       
         this.levelDes=this.levelDes.bind(this);
    
-  
-        this.UpdateInterview=this.UpdateInterview.bind(this);
+        this.UpdateInterviewLevel=this.UpdateInterviewLevel.bind(this);
         this.cancel=this.cancel.bind(this);
 
  
@@ -44,18 +40,17 @@ componentDidMount(){
 
         console.log(this.props.match);
     JobService.GetInterviewLevelById(localStorage.getItem('id')).then((res)=>{
-        let lev=res.data;
+        let level=res.data;
         this.setState({
             id:localStorage.getItem('id')
-            ,level: lev.jobId,
+            ,level: level.level,
 
-            levelDes:lev.levelDes,
-         
+            levelDes:level.levelDes
         });
     });
 }
 
-    UpdateInterview=(e)=>{
+    UpdateInterviewLevel=(e)=>{
      
     
        e.preventDefault();
@@ -67,18 +62,18 @@ componentDidMount(){
         if(this.state.level==""){
             
          formvalidstatus=false;
-         errors["level"]="Please enter your level !";
+         errors["level"]="Please enter Level !";
         
         }       
         if((this.state.levelDes)==""){
           
             formvalidstatus=false;
-            errors["levelDes"]="Please enter your levelDes!";
+            errors["levelDes"]="Please enter Description!";
         } 
        
           
       
-      
+  
 
 
       this.setState({
@@ -92,20 +87,19 @@ componentDidMount(){
                     
                     levelDes:this.state.levelDes,
                 
-                    
                     };
         
                     console.log('lev=>'+lev.level+ " " + lev.levelDes
-                     + " " );
+                     );
                     
                      console.log('lev=>'+JSON.stringify(lev));
                     
-                    JobService.UpdateInterview(lev.id,lev).then(res=>{
+                    JobService.UpdateInterviewLevel(lev.id,lev).then(res=>{
                         
-                        window.location="/viewjob";
+                        window.location="/viewlevel";
                         localStorage.setItem('Updatestatus',true);
                        
-                        alert('Job Updated successfully')
+                        alert('Interview Level Updated successfully')
                     });
                    
 
@@ -124,6 +118,7 @@ componentDidMount(){
         this.setState({levelDes:event.target.value});
      }
      
+    
      cancel(){
         alert( window.location.replace('http://localhost:3000/'))
     }
@@ -136,26 +131,28 @@ componentDidMount(){
             <Sidebar />
         </div>
             <form className="addformjob">
-                <h2><strong>Update InterviewLevel</strong></h2>
+                <h2><strong>Update Interview Level</strong></h2>
+                <label>Id</label>
                 <input id="id"  name="id" value={ this.state.id} onChange={this.id}></input><br></br>
-
+                {/* <div className="errorMsgJob">{this.state.errors.id}</div> */}
 
                 <label>Level</label>
                 <input id="level" type="text" name="level"  value={ this.state.level} onChange={this.level}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.level}</div>
               <br></br>
-                <label >Level Description</label>
+                <label >Description</label>
                 <input  id="levelDes" type="text"  name="levelDes" value={ this.state.levelDes} onChange={this.levelDes}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.levelDes}</div>
 
                 <br></br>
 
-            
+               
+                <br></br>
 
-                <button id="jobb" className="btn btn-success" onClick={(e)=>this.UpdateInterview(e)}>Update</button>
+                <button id="jobb" className="btn btn-success" onClick={(e)=>this.UpdateInterviewLevel(e)}>Update</button>
                 <br></br>
                 <br></br>
-                <Link to={'/viewInterview'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewInterview'}}>Back</button>
+                <Link to={'/viewlevel'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewlevel'}}>Back</button>
             </Link> 
                 <br></br>
               
@@ -166,4 +163,4 @@ componentDidMount(){
         )
      }
 }
-export default UpdateInterview
+export default UpdateLevel

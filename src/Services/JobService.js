@@ -15,7 +15,7 @@ class JobService{
   
 
     GetJobById(id){
-        return axios.get(Job_Baseurl+"/GetJobByID?id="+id);
+        return axios.get(Job_Baseurl+"/GetJobById?id="+id);
     }
 
     UpdateJob(id, job){
@@ -34,10 +34,10 @@ class JobService{
     
 
     GetInterviewLevelById(id){
-        return axios.get(Job_Baseurl+"/GetInterviewLevelByID?id="+id);
+        return axios.get(Job_Baseurl+"/GetInterviewLevelById?id="+id);
     }
-    UpdateInterview(id,job){
-        return axios.post(Job_Baseurl+"/UpdateInterviewLevel"+id,job);
+    UpdateInterviewLevel(id,level){
+        return axios.put(Job_Baseurl+"/UpdateInterviewLevel?id="+id,level);
     }
 
     GetAllInterviewLevels(){
