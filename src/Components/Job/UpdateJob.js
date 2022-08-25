@@ -42,8 +42,9 @@ class UpdateJob extends React.Component{
 componentDidMount(){
 
 
-        console.log(this.props.match);
-    JobService.GetJobById(localStorage.getItem('id')).then((res)=>{
+        //console.log(this.props.match);
+    JobService.GetJobById(localStorage.getItem('id')).then(res=>{
+        //console.log(res);
         let job=res.data;
         this.setState({
             id:localStorage.getItem('id')
@@ -53,6 +54,8 @@ componentDidMount(){
             available: job.available
         });
     });
+    //alert(this.state.id);
+    //alert(localStorage.getItem('id'));
 }
 
     UpdateJob=(e)=>{
@@ -107,7 +110,7 @@ componentDidMount(){
                      console.log('jobc=>'+JSON.stringify(jobc));
                     
                     JobService.UpdateJob(jobc.id,jobc).then(res=>{
-                        
+                        alert(res);
                         window.location="/viewjob";
                         localStorage.setItem('Updatestatus',true);
                        
@@ -146,12 +149,12 @@ componentDidMount(){
         </div>
             <form className="addformjob">
                 <h2><strong>Update Job</strong></h2>
-                <label>Id</label>
-                <input id="id"  name="id" value={ this.state.id} onChange={this.id}></input><br></br>
-                <div className="errorMsgJob">{this.state.errors.id}</div>
+                {/* <label>Id</label>
+                <input id="id"  name="id" value={ this.state.id} onChange={(e)=>this.id}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.id}</div> */}
 
                 <label>Job Id</label>
-                <input id="jobId" type="text" name="jobId"  value={ this.state.jobId} onChange={this.jobId}></input><br></br>
+                <input id="jobId" disabled="true" type="text" name="jobId"  value={ this.state.jobId} onChange={this.jobId}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.jobId}</div>
               <br></br>
                 <label >Job Role</label>

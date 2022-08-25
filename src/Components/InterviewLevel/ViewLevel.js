@@ -60,10 +60,24 @@ class ViewLevel extends React.Component{
    
 
     editLevel(id){
+        
      localStorage.setItem('userid',id);
       window.location=`/updatelevel/${id}`;
       
     }
+
+    // editLevel(id){
+    //     JobService.GetInterviewLevelById(localStorage.getItem('id')).then((res)=>{
+    //         let level=res.data;
+    //         this.setState({
+    //             id:localStorage.getItem('id')
+    //             ,level: level.level,
+    
+    //             levelDes:level.levelDes
+    //         });
+    //     });
+    // }
+
     addLevel(){
         window.location="/interview";
     }

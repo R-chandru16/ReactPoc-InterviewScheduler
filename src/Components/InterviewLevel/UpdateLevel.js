@@ -15,6 +15,7 @@ class UpdateLevel extends React.Component{
     constructor(props){
         super(props)
         this.state={
+            
             id:0,
             level:'',
             levelDes:'',
@@ -93,7 +94,6 @@ componentDidMount(){
                      );
                     
                      console.log('lev=>'+JSON.stringify(lev));
-                    
                     JobService.UpdateInterviewLevel(lev.id,lev).then(res=>{
                         
                         window.location="/viewlevel";
@@ -132,9 +132,9 @@ componentDidMount(){
         </div>
             <form className="addformjob">
                 <h2><strong>Update Interview Level</strong></h2>
-                <label>Id</label>
+                {/* <label>Id</label>
                 <input id="id"  name="id" value={ this.state.id} onChange={this.id}></input><br></br>
-                {/* <div className="errorMsgJob">{this.state.errors.id}</div> */}
+                <div className="errorMsgJob">{this.state.errors.id}</div> */}
 
                 <label>Level</label>
                 <input id="level" type="text" name="level"  value={ this.state.level} onChange={this.level}></input><br></br>
