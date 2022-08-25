@@ -44,7 +44,7 @@ class Interview extends Component{
         if(this.state.level==""){
             
          formvalidstatus=false;
-         errors["level"]="Please enter your level !";
+         errors["level"]="Please enter Interview level !";
         
         }      
       
@@ -52,7 +52,7 @@ class Interview extends Component{
         if((this.state.levelDes)==""){
           
             formvalidstatus=false;
-            errors["levelDes"]="Please enter your levelDes!";
+            errors["levelDes"]="Please enter level Description!";
         } 
       
        
