@@ -65,19 +65,28 @@ componentDidMount(){
         let errors={};
        // var pattern=new RegExp( /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/);
       // var patt=new RegExp(/\d$/);        
+      var pat=new RegExp(/[a-zA-Z]/);
+
         let formvalidstatus=true;  
          
-        if(this.state.jobId==""){
+        // if(this.state.jobId==""){
             
-         formvalidstatus=false;
-         errors["jobId"]="Please enter your jobid !";
+        //  formvalidstatus=false;
+        //  errors["jobId"]="Please enter your jobid !";
         
-        }       
+        // }       
+        
         if((this.state.jobRole)==""){
           
             formvalidstatus=false;
-            errors["jobRole"]="Please enter your jobrole!";
+            errors["jobRole"]="Please enter Job Role!";
         } 
+        else if(!pat.test(this.state.jobRole)){
+            
+          formvalidstatus=false;
+          errors["jobRole"]="Please enter only alphabets !";
+         
+        }   
        
           
       
@@ -85,7 +94,7 @@ componentDidMount(){
       if((this.state.available)==0){
           
         formvalidstatus=false;
-        errors["available"]="Please select the available !";
+        errors["available"]="Please enter number of vacancies !";
         
     }
 
@@ -153,9 +162,9 @@ componentDidMount(){
                 <input id="id"  name="id" value={ this.state.id} onChange={(e)=>this.id}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.id}</div> */}
 
-                <label>Job Id</label>
-                <input id="jobId" disabled="true" type="text" name="jobId"  value={ this.state.jobId} onChange={this.jobId}></input><br></br>
-                <div className="errorMsgJob">{this.state.errors.jobId}</div>
+                {/* <label>Job Id</label>
+                <input id="jobId" disabled="true" type="text" name="jobId"  value={ this.state.jobId} onChange={this.jobId}></input><br></br> */}
+                {/* <div className="errorMsgJob">{this.state.errors.jobId}</div> */}
               <br></br>
                 <label >Job Role</label>
                 <input  id="jobRole" type="text"  name="jobRole" value={ this.state.jobRole} onChange={this.jobRole}></input><br></br>

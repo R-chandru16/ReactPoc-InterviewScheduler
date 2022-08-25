@@ -42,18 +42,18 @@ class Job extends Component{
        var pat=new RegExp(/[a-zA-Z]/);
         let formvalidstatus=true;  
          
-        if(this.state.jobId==""){
+        // if(this.state.jobId==""){
             
-         formvalidstatus=false;
-         errors["jobId"]="Please enter your jobid !";
+        //  formvalidstatus=false;
+        //  errors["jobId"]="Please enter your jobid !";
         
-        }      
-        else if(!pattern.test(this.state.jobId)){
+        // }      
+        // else if(!pattern.test(this.state.jobId)){
             
-          formvalidstatus=false;
-          errors["jobId"]="Please enter only letters and numbers !";
+        //   formvalidstatus=false;
+        //   errors["jobId"]="Please enter only letters and numbers !";
          
-         }   
+        //  }   
 
         
         if((this.state.jobRole)==""){
@@ -74,7 +74,7 @@ class Job extends Component{
       if((this.state.available)==0){
           
         formvalidstatus=false;
-        errors["available"]="Please select the available !";
+        errors["available"]="Please enter number of vacancies !";
         
     }
 
@@ -134,9 +134,9 @@ class Job extends Component{
             <form className="addformjob">
                 <h2><strong>Add Job</strong></h2>
         {/* <div className="content"> */}
-                <label>Job Id</label>
-                <input id="jobId" type="text" name="jobId"  onChange={(e)=> this.jobId(e)}></input><br></br>
-                <div className="errorMsgJob">{this.state.errors.jobId}</div>
+                {/* <label>Job Id</label>
+                <input id="jobId" type="text" name="jobId"  onChange={(e)=> this.jobId(e)}></input><br></br> */}
+                {/* <div className="errorMsgJob">{this.state.errors.jobId}</div> */}
               <br></br>
                 <label >Job Role</label>
                 <input  id="jobRole" type="text"  name="jobRole" onChange={(e)=>this.jobRole(e)}></input><br></br>
