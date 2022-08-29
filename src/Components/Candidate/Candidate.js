@@ -1,109 +1,263 @@
-// import React, { Component } from 'react';
-// import { Routes } from 'react-router-dom';
-// import Sidebar from '../Sidebar';
-// import '../Dashboard.css';
+import React, { Component } from "react";
+import Sidebar from '../Sidebar';
+
+import CandidateService from "../../Services/CandidateService";
+// import '../css/Create.css';
+import './../Job/Job.css';
 
 
-// class Candidate extends Component {
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
-// render() {
-// return (
-//     <div class="row">
-//         <div class="side">
-//         <Sidebar />
-//         </div>
-//         <div class="main">
-// <div class="row" className="mb-2 pageheading">
+
+class Candidate extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            name:'',
+            dob:'',
+            address:'',
+            mobileno:'',
+            qualification:'',
+            email:'',
+            level_id:0,
+            job_id:0,
+            resume:'',           
+            errors:{}   
+            
+        }
+     
+        this.name=this.name.bind(this);     
+        this.dob=this.dob.bind(this);  
+        this.address=this.address.bind(this);
+        this.mobileno=this.mobileno.bind(this);
+        this.qualification=this.qualification.bind(this);
+        this.email=this.email.bind(this);
+        this.level_id=this.level_id.bind(this);
+        this.job_id=this.job_id.bind(this);
+        this.resume=this.resume.bind(this);
+        this.AddCandidate=this.AddCandidate.bind(this);
+         
+ 
+  
+}    
+    AddCandidate=(e)=>{
+     
     
-//   <br></br>
-// <h3><strong>HR Candidate</strong></h3>
-// <br></br>
+       e.preventDefault();
+        let errors={};
+       var pattern=new RegExp( /^[0-9a-zA-Z]+$/);
+       var pat=new RegExp(/[a-zA-Z]/);
+        let formvalidstatus=true;  
+         
+        // if(this.state.jobId==""){
+            
+        //  formvalidstatus=false;
+        //  errors["jobId"]="Please enter your jobid !";
+        
+        // }      
+        // else if(!pattern.test(this.state.jobId)){
+            
+        //   formvalidstatus=false;
+        //   errors["jobId"]="Please enter only letters and numbers !";
+         
+        //  }   
 
-// <div class="home-content">
-//         <div class="overview-boxes">
-//             <div class="box">
-//                 <div class="right-side">
-//                     <div class="box-topic">Total Candidates</div>
-//                     <div class="number">9</div>
+        
+        if((this.state.name)==""){
+          
+            formvalidstatus=false;
+            errors["name"]="Please enter your name!";
+        } 
+        if((this.state.dob)==""){
+            
+          formvalidstatus=false;
+          errors["dob"]="Please enter your DOB!";
+         
+        }   
+        if((this.state.address)==""){
+            
+            formvalidstatus=false;
+            errors["address"]="Please enter your Address!";
+           
+          }   
+        
+      if((this.state.mobileno)==""){
+          
+        formvalidstatus=false;
+        errors["mobileno"]="Please enter Mobile Number !";
+        
+    }
+
+    if((this.state.qualification)==""){
+            
+        formvalidstatus=false;
+        errors["qualification"]="Please enter Qualification!";
+       
+      }   
+      if((this.state.email)==""){
+            
+        formvalidstatus=false;
+        errors["email"]="Please enter Email!";
+       
+      }   
+      if((this.state.level_id)==0){
+            
+        formvalidstatus=false;
+        errors["level_id"]="Please enter Level!";
+       
+      }   
+      if((this.state.job_id)==0){
+            
+        formvalidstatus=false;
+        errors["job_id"]="Please enter your Job Role!";
+       
+      }   
+      if((this.state.resume)==""){
+            
+        formvalidstatus=false;
+        errors["resume"]="Please upload Resume!";
+       
+      }   
+
+
+
+      this.setState({
+          errors:errors
+          
+      });
+      if(formvalidstatus==true){
+    
+        let candidate={name:this.state.name,
                     
-//                 </div>
-//                 <i class='bx bx-cart-alt cart'>
-//                     <i class="bi bi-person-circle"></i>
+                    dob:this.state.dob,
+                
+                      address:this.state.address,
+                      mobileno:this.state.mobileno,
+                      qualification:this.state.qualification,
+                      email:this.state.email,
+                      level_id:parseInt(this.state.level_id),
+                      job_id:parseInt(this.state.job_id),
+                      resume:this.state.resume
 
-//                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-//                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-//                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-//                     </svg>
-//                 </i>
-//             </div>
-//             <div class="box">
-//                 <div class="right-side">
-//                     <div class="box-topic">Interviews Scheduled</div>
-//                     <div class="number">5</div>
+                    };
+        
+                    console.log('candidate=>'+candidate.name+ " " + candidate.dob
+                     + " " + candidate.address + " " + candidate.mobileno + " " + candidate.qualification + " " + candidate.email + " " + candidate.level_id + " " + candidate.job_id + " " + candidate.resume);
+                    
+                     console.log('candidate=>'+JSON.stringify(candidate));
+                    
+                    CandidateService.AddCandidate(candidate).then(res=>{
+                        
+                        window.location="/viewcandidate";
+                        localStorage.setItem('Candidatestatus',true);
+                       
+                        alert('Candidate Added successfully')
+                    });
                    
-//                 </div>
-//                 <i class='bx bx-cart cart three'>
-//                     <i class="bi bi-file-person"></i>
 
+    }
+   }
 
-//                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-//                         <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-//                         <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-//                     </svg>
-//                 </i>
-//             </div>
-//             <div class="box">
-//                 <div class="right-side">
-//                     <div class="box-topic">Interviews Done</div>
-//                     <div class="number">3</div>
-                   
-//                 </div>
-//                 <i class='bx bxs-cart-add cart two'>
+    
+     name=(event)=>{
+        this.setState({name:event.target.value});
+     }
+    
+     dob=(event)=>{
+        this.setState({dob:event.target.value});
+     }
+     
+     address=(event)=>{
+        this.setState({address:event.target.value});
+     }
+     mobileno=(event)=>{
+        this.setState({mobileno:event.target.value});
+     }
+     qualification=(event)=>{
+        this.setState({qualification:event.target.value});
+     }
+     email=(event)=>{
+        this.setState({email:event.target.value});
+     }
+     level_id=(event)=>{
+        this.setState({level_id:event.target.value});
+     }
+     job_id=(event)=>{
+        this.setState({job_id:event.target.value});
+     }
+     resume=(event)=>{
+        this.setState({resume:event.target.value});
+     }
+     cancel(){
+        window.location="/";
+     }
 
+     render(){
+        return(
+            <div>
+                   <div class="side">
+            <Sidebar />
+        </div>
+            <form className="addformjob">
+                <h2><strong>Add Candidate</strong></h2>
+        
+              {/* <br></br> */}
+                <label >Name</label>
+                <input  id="name" type="text"  name="name" onChange={(e)=>this.name(e)}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.name}</div>
 
-//                     <i class="bi bi-check-lg"></i>
-//                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-//                         <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
-//                     </svg>
+                {/* <br></br> */}
 
-//                 </i>
-//             </div>
-//             <div class="box">
-//                 <div class="right-side">
-//                     <div class="box-topic">Pending Interviews</div>
-//                     <div class="number">2</div>
-                  
-//                 </div>
-//                 <i class='bx bxs-cart-download cart four'>
-//                     <i class="bi bi-hourglass-split"></i>
-//                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">
-//                         <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z" />
-//                     </svg>
-//                 </i>
-//             </div>
-//         </div>
-//       </div>
+                <label >DOB</label>
+                <input  id="dob" type="date"  name="dob" onChange={(e)=>this.dob(e)}></input><br></br>
+                {/* <div className="errorMsgJob">{this.state.errors.dob}</div> */}
+                {/* <br></br> */}
+                <label >Address</label>
+                <input  id="address" type="text"  name="address" onChange={(e)=>this.address(e)}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.address}</div>
 
-//       <br />
-//     <p align="justify">
-//         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
-//         pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus.
-//         Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex,
-//         in pretium orci vestibulum eget. Class aptent taciti sociosqu ad litora torquent
-//         per conubia nostra, per inceptos himenaeos. Duis pharetra luctus lacus ut
-//         vestibulum. Maecenas ipsum lacus, lacinia quis posuere ut, pulvinar vitae dolor.
-//         Integer eu nibh at nisi ullamcorper sagittis id vel leo. Integer feugiat
-//         faucibus libero, at maximus nisl suscipit posuere. Morbi nec enim nunc.
-//         Phasellus bibendum turpis ut ipsum egestas, sed sollicitudin elit convallis.
-//         Cras pharetra mi tristique sapien vestibulum lobortis. Nam eget bibendum metus,
-//         non dictum mauris. Nulla at tellus sagittis, viverra est a, bibendum metus.
-//     </p>
+                {/* <br></br> */}
+                <label >Mobile No.</label>
+                <input  id="mobileno" type="text"  name="mobileno" onChange={(e)=>this.mobileno(e)}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.mobileno}</div>
 
-// </div>
-// </div>
-// </div>
-// );
-// }
-// }
-// export default Candidate;
+                {/* <br></br> */}
+                <label >Email</label>
+                <input  id="email" type="text"  name="email" onChange={(e)=>this.email(e)}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.email}</div>
 
+                {/* <br></br> */}
+                <label >Level</label>
+                <input  id="level_id" type="number"  name="level_id" onChange={(e)=>this.level_id(e)}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.level_id}</div>
+
+                {/* <br></br> */}
+                <label >Job Role</label>
+                <input  id="job_id" type="number"  name="job_id" onChange={(e)=>this.job_id(e)}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.job_id}</div>
+
+                {/* <br></br> */}
+                <label >Resume</label>
+                <input  id="resume" type="file"  name="resume" onChange={(e)=>this.resume(e)}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.resume}</div>
+
+                {/* <br></br>
+
+                <br></br> */}
+        {/* </div> */}
+
+                <button id="jobb" className="btn btn-success" onClick={this.AddCandidate}>Create</button>
+                <br></br>
+                <br></br>
+                <Link to={'/job'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
+            </Link> 
+                <br></br>
+             
+            </form>
+        </div>
+            
+        )
+     }
+}
+export default Candidate

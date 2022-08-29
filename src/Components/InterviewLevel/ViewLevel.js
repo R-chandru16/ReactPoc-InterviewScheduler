@@ -61,7 +61,7 @@ class ViewLevel extends React.Component{
 
     editLevel(id){
         
-     localStorage.setItem('userid',id);
+     localStorage.setItem('id',id);
       window.location=`/updatelevel/${id}`;
       
     }

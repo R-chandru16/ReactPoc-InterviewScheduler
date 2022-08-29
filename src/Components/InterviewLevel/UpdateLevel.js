@@ -132,9 +132,9 @@ componentDidMount(){
         </div>
             <form className="addformjob">
                 <h2><strong>Update Interview Level</strong></h2>
-                {/* <label>Id</label>
-                <input id="id"  name="id" value={ this.state.id} onChange={this.id}></input><br></br>
-                <div className="errorMsgJob">{this.state.errors.id}</div> */}
+               
+                <input id="id" type="hidden" name="id" value={ this.state.id} onChange={this.id}></input><br></br>
+                <div className="errorMsgJob">{this.state.errors.id}</div>
 
                 <label>Level</label>
                 <input id="level" type="text" name="level"  value={ this.state.level} onChange={this.level}></input><br></br>
