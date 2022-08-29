@@ -138,7 +138,7 @@ class Candidate extends Component{
                       email:this.state.email,
                       level_id:parseInt(this.state.level_id),
                       job_id:parseInt(this.state.job_id),
-                      resume:this.state.resume
+                      resume:this.state.resume,
 
                     };
         
@@ -149,7 +149,7 @@ class Candidate extends Component{
                     
                     CandidateService.AddCandidate(candidate).then(res=>{
                         
-                        window.location="/viewcandidate";
+                        window.location="/addcandidate";
                         localStorage.setItem('Candidatestatus',true);
                        
                         alert('Candidate Added successfully')
@@ -250,7 +250,7 @@ class Candidate extends Component{
                 <button id="jobb" className="btn btn-success" onClick={this.AddCandidate}>Create</button>
                 <br></br>
                 <br></br>
-                <Link to={'/job'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewjob'}}>Back</button>
+                <Link to={'/addcandidate'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/addcandidate'}}>Back</button>
             </Link> 
                 <br></br>
              

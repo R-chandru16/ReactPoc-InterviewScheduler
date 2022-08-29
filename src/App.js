@@ -89,7 +89,7 @@ function App() {
 
       <Route path='/Dashboard' element={<Dashboard/>}></Route>
 
-      <Route path='/Candidate' element={<Candidate/>}></Route>
+      <Route path='/addcandidate' element={<Candidate/>}></Route>
       <Route path='/Panel' element={<Panel/>}></Route>
 
 
