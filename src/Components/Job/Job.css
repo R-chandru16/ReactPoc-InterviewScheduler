@@ -1,6 +1,6 @@
 .addformjob{
     width: 1000px;
-    height: 600px;
+    height: 580px;
     margin-left: 430px;
     margin-top:57px;
     justify-content: center;
@@ -11,6 +11,8 @@
     padding: 1rem;
     align-items: center;
     text-align: center;
+    overflow:auto;
+    scrollbar-base-color:gold; 
 }
 h2{
     text-align: center;
