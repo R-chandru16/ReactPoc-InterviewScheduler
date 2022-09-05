@@ -49,6 +49,11 @@ class JobService{
     {
         return axios.delete(Job_Baseurl+"/DeleteInterviewLevel?id="+id);
     }
+
+    GetJobroleandLevel(id)
+    {
+        return axios.delete(Job_Baseurl+"/GetJobroleandLevel?id="+id);
+    }
   
 }
 

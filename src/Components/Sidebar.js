@@ -55,7 +55,7 @@ return (
                                 </svg>
 
                             </i>
-                            <i></i><NavLink to="/addcandidate"> <em>Candidate</em></NavLink>
+                            <i></i><NavLink to="/viewcandidate"> <em>Candidate</em></NavLink>
               
            </a>
         </li>

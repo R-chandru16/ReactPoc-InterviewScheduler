@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Sidebar from '../Sidebar';
 
 import CandidateService from "../../Services/CandidateService";
+
 // import '../css/Create.css';
 import './../Job/Job.css';
 
 
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
+import JobService from "../../Services/JobService";
 
 
 class Candidate extends Component{
@@ -36,12 +38,12 @@ class Candidate extends Component{
         this.level_id=this.level_id.bind(this);
         this.job_id=this.job_id.bind(this);
         this.resume=this.resume.bind(this);
-        this.AddCandidate=this.AddCandidate.bind(this);
+        this.addCandidate=this.addCandidate.bind(this);
          
  
   
 }    
-    AddCandidate=(e)=>{
+    addCandidate=(e)=>{
      
     
        e.preventDefault();
@@ -141,6 +143,8 @@ class Candidate extends Component{
                       resume:this.state.resume,
 
                     };
+
+                    console.log(this.state.name);
         
                     console.log('candidate=>'+candidate.name+ " " + candidate.dob
                      + " " + candidate.address + " " + candidate.mobileno + " " + candidate.qualification + " " + candidate.email + " " + candidate.level_id + " " + candidate.job_id + " " + candidate.resume);
@@ -207,47 +211,47 @@ class Candidate extends Component{
                 <input  id="name" type="text"  name="name" onChange={(e)=>this.name(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.name}</div>
 
-                {/* <br></br> */}
+                <br></br>
 
                 <label >DOB</label>
                 <input  id="dob" type="date"  name="dob" onChange={(e)=>this.dob(e)}></input><br></br>
                 {/* <div className="errorMsgJob">{this.state.errors.dob}</div> */}
-                {/* <br></br> */}
+                <br></br>
                 <label >Address</label>
                 <input  id="address" type="text"  name="address" onChange={(e)=>this.address(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.address}</div>
 
-                {/* <br></br> */}
+                <br></br>
                 <label >Mobile No.</label>
                 <input  id="mobileno" type="text"  name="mobileno" onChange={(e)=>this.mobileno(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.mobileno}</div>
 
-                {/* <br></br> */}
+                <br></br>
                 <label >Email</label>
                 <input  id="email" type="text"  name="email" onChange={(e)=>this.email(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.email}</div>
 
-                {/* <br></br> */}
+                <br></br>
                 <label >Level</label>
                 <input  id="level_id" type="number"  name="level_id" onChange={(e)=>this.level_id(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.level_id}</div>
 
-                {/* <br></br> */}
+                <br></br>
                 <label >Job Role</label>
                 <input  id="job_id" type="number"  name="job_id" onChange={(e)=>this.job_id(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.job_id}</div>
 
-                {/* <br></br> */}
+                <br></br>
                 <label >Resume</label>
                 <input  id="resume" type="file"  name="resume" onChange={(e)=>this.resume(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.resume}</div>
 
-                {/* <br></br>
+                <br></br>
 
-                <br></br> */}
+                <br></br>
         {/* </div> */}
 
-                <button id="jobb" className="btn btn-success" onClick={this.AddCandidate}>Create</button>
+                <button id="jobb" className="btn btn-success" onClick={this.addCandidate}>Create</button>
                 <br></br>
                 <br></br>
                 <Link to={'/addcandidate'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/addcandidate'}}>Back</button>
@@ -261,3 +265,18 @@ class Candidate extends Component{
      }
 }
 export default Candidate
+
+
+// export class Job extends React.Component{
+//   render(){
+//       return(
+//               <div className="col-md-4">
+//                  <form className="addformjob">
+
+//                   <h2>{this.props.jobrole}</h2>
+//                   </form>
+                 
+//               </div>
+//           )
+//   }
+// }

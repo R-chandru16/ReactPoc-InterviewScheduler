@@ -14,7 +14,6 @@ import UpdateJob from './Components/Job/UpdateJob';
 
 import Interview from './Components/InterviewLevel/AddInterview';
 
-
 import { useState } from 'react';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,6 +22,7 @@ import Candidate from './Components/Candidate/Candidate';
 import Panel from './Components/Panel/Panel';
 import ViewLevel from './Components/InterviewLevel/ViewLevel';
 import UpdateLevel from './Components/InterviewLevel/UpdateLevel';
+import ViewCandidate from './Components/Candidate/ViewCandidate';
  toast.configure();
 
 
@@ -102,6 +102,8 @@ function App() {
       <Route path='/interview' element={<Interview/>}></Route>
       <Route path='/updatelevel/:id' element={<UpdateLevel/>}></Route>
       <Route path='/viewlevel' element={<ViewLevel/>}></Route>
+      <Route path='/viewcandidate' element={<ViewCandidate/>}></Route>
+
 
 
 
