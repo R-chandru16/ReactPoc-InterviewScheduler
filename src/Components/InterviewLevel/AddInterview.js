@@ -117,7 +117,7 @@ class Interview extends Component{
                 <div className="errorMsgJob">{this.state.errors.level}</div>
               <br></br>
                 <label >Level Description</label>
-                <input  id="jobRole" type="text"  name="jobRole" onChange={(e)=>this.levelDes(e)}></input><br></br>
+                <input  id="levelDes" type="text"  name="levelDes" onChange={(e)=>this.levelDes(e)}></input><br></br>
                 <div className="errorMsgJob">{this.state.errors.levelDes}</div>
 
                 <br></br>

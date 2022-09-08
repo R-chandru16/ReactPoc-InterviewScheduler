@@ -144,8 +144,8 @@ class ViewCandidate extends React.Component{
             ((candidate.mobileno.toLowerCase()).indexOf(searchval)!==-1)||
             ((candidate.qualification.toLowerCase()).indexOf(searchval)!==-1)||
             ((candidate.email.toLowerCase()).indexOf(searchval)!==-1)||
-            ((candidate.level_id.toString()).indexOf(searchval)!==-1)||
-            ((candidate.job_id.toString()).indexOf(searchval)!==-1)||
+            ((candidate.LevelId.toString()).indexOf(searchval)!==-1)||
+            ((candidate.JobId.toString()).indexOf(searchval)!==-1)||
 
             ((candidate.resume.toLowerCase()).indexOf(searchval)!==-1))
 
@@ -241,8 +241,8 @@ class ViewCandidate extends React.Component{
                              <td>{items.mobileno}</td>
                              <td>{items.qualification}</td>
                              <td>{items.email}</td>
-                             <td>{items.level_id}</td>
-                             <td>{items.job_id}</td>
+                             <td>{items.level.level}</td>
+                             <td>{items.job.jobRole}</td>
 
                              <td><button className="btn btn-primary" onClick={()=>this.editCandidate(items.id)}>Edit</button></td>
                              <td><button className="btn btn-danger"  onClick={()=>this.deleteButton(items.id)}>Delete</button></td>

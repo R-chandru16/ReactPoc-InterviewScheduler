@@ -16,6 +16,11 @@ function AddCandidate(){
 
     const [levellist, setLevellist] = useState([]);
     const [joblist, setJoblist] = useState([]);
+    const [selectedLevelId, setselectedLevelId] = useState(0);
+    const [selectedJobId, setselectedJobId] = useState(0);
+
+
+
 
     const [candidateInput, setCandidate] = useState({
         name : '',
@@ -24,8 +29,8 @@ function AddCandidate(){
         mobileno : '',
         qualification : '',
         email: '',
-        level_id : 0,
-        job_id : 0,
+        LevelId : 0,
+        JobId : 0,
         resume : '',
 
 
@@ -38,6 +43,21 @@ function AddCandidate(){
         setCandidate({...candidateInput, [e.target.name]:e.target.value});
 
     }
+
+    const handleLevelId = (e) => {
+      e.persist();
+      setselectedLevelId(Number(e.target.value));
+      console.log(e.target.value);
+
+  }
+
+  const handleJobId = (e) => {
+    e.persist();
+    setselectedJobId(Number(e.target.value));
+    console.log(e.target.value);
+
+
+}
 
     useEffect(()=>{
         axios.get(Job_Baseurl + `/GetAllInterviewLevels` ).then(res=>{
@@ -95,7 +115,9 @@ function AddCandidate(){
     // }
 
     const submitCandidate = (e) => {
-        e.persist();
+     // debugger;
+       // e.persist();
+        console.log(Candidate_Baseurl + `/AddCandidate`);
 
         const data = {
             name: candidateInput.name,
@@ -104,23 +126,31 @@ function AddCandidate(){
             mobileno: candidateInput.mobileno,
             qualification: candidateInput.qualification,
             email: candidateInput.email,
-            level_id: parseInt(candidateInput.level_id),
-            job_id: parseInt(candidateInput.job_id),
+            LevelId: selectedLevelId,
+            JobId: selectedJobId,
             resume: candidateInput.resume,
 
         }
 
-        axios.post(Candidate_Baseurl + `/AddCandidate`, data).then(res => {
-            if(res.data.status === 200){
-                console.log(res);
-                window.location="/viewcandidate";
+        console.log(data);
+
+       // debugger;
+        axios.post(Candidate_Baseurl + "/AddCandidate", data).then(res => {
+         // debugger;
+            //if(res?.data?.status === 200){
+                console.log(res.data);
+               //window .location="/viewcandidate";
 
                 alert("Candidate added Successfully!");
-            }
-            else{
-                alert("Something went wrong!");
-            }
-        });
+                setselectedLevelId(null);
+                setselectedJobId(null);
+          //  }
+            // else{
+            //     alert("Something went wrong!");
+            // }
+        }).catch((err)=>{
+            console.log(err)
+        })
 
 
     }
@@ -165,7 +195,7 @@ function AddCandidate(){
             <br></br>
 
             <label >Level</label>         
-            <select name="level_id" onChange={handleInput} value={candidateInput.level_id}>
+            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={selectedLevelId} >
               <option>
                   Select Level
               </option>
@@ -177,11 +207,14 @@ function AddCandidate(){
                 })
               }
             </select>
+
+{/* <input  id="level_id" type="number"  name="level_id"  >1</input><br></br> */}
+
             {/* <div className="errorMsgJob">{errorlist.level_id}</div> */}
             <br></br>
 
             <label >Job Role</label>
-            <select name="job_id" onChange={handleInput} value={candidateInput.job_id}>
+            <select name="JobId" onChange={(e)=>handleJobId(e)} value={selectedJobId}>
               <option>
                   Select Job Role
               </option>
@@ -193,6 +226,9 @@ function AddCandidate(){
                 })
               }
             </select>
+
+{/* <input  id="job_id" type="number"  name="job_id"  >2</input><br></br> */}
+
             {/* <div className="errorMsgJob">{errorlist.job_id}</div> */}
             <br></br>
 
@@ -205,7 +241,7 @@ function AddCandidate(){
             <br></br>
     {/* </div> */}
 
-            <button id="jobb" className="btn btn-success" type="submit">Create</button>
+            <button id="jobb" className="btn btn-success" type="submit" onClick={()=>submitCandidate}>Create</button>
             <br></br>
             <br></br>
             {/* <Link to={'/addcandidate'}><button className="btn btn-outline-dark" type="submit" >Back</button>
