@@ -137,17 +137,17 @@ function AddCandidate(){
        // debugger;
         axios.post(Candidate_Baseurl + "/AddCandidate", data).then(res => {
          // debugger;
-            //if(res?.data?.status === 200){
+            if(res?.data?.status === 200){
                 console.log(res.data);
-               //window .location="/viewcandidate";
+                window.location="/viewcandidate";
 
                 alert("Candidate added Successfully!");
                 setselectedLevelId(null);
                 setselectedJobId(null);
-          //  }
-            // else{
-            //     alert("Something went wrong!");
-            // }
+           }
+            else{
+                alert("Something went wrong!");
+            }
         }).catch((err)=>{
             console.log(err)
         })
@@ -212,6 +212,7 @@ function AddCandidate(){
 
             {/* <div className="errorMsgJob">{errorlist.level_id}</div> */}
             <br></br>
+            <br></br>
 
             <label >Job Role</label>
             <select name="JobId" onChange={(e)=>handleJobId(e)} value={selectedJobId}>
@@ -231,12 +232,11 @@ function AddCandidate(){
 
             {/* <div className="errorMsgJob">{errorlist.job_id}</div> */}
             <br></br>
-
-            <label >Resume</label>
-            <input  id="resume" type="file"  name="resume" onChange={handleInput} value={candidateInput.resume} ></input><br></br>
+            {/* <label >Resume</label> */}
+            <input  id="resume" type="file"  name="resume" onChange={handleInput} value={candidateInput.resume} hidden></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.resume}</div> */}
 
-            <br></br>
+            {/* <br></br> */}
 
             <br></br>
     {/* </div> */}
