@@ -1,12 +1,9 @@
 import axios from 'axios';
 import React, { useState,useEffect } from "react";
 import Sidebar from '../Sidebar';
-import CandidateService from "../../Services/CandidateService";
 import './../Job/Job.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
-import JobService from "../../Services/JobService";
-import { FaSortAlphaDownAlt } from 'react-icons/fa';
 // import swal from 'sweetalert';
 
 function AddCandidate(){
@@ -165,37 +162,37 @@ function AddCandidate(){
     
           {/* <br></br> */}
             <label >Name</label>
-            <input  id="name" type="text"  name="name" onChange={handleInput} value={candidateInput.name} ></input><br></br>
+            <input  id="name" type="text"  name="name" onChange={handleInput} value={candidateInput.name} required="true"></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.name}</div> */}
             <br></br>
 
             <label >DOB</label>
-            <input  id="dob" type="date"  name="dob" onChange={handleInput} value={candidateInput.dob} ></input><br></br>
+            <input  id="dob" type="date"  name="dob" onChange={handleInput} value={candidateInput.dob} required="true"></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.dob}</div> */}
             <br></br>
 
             <label >Address</label>
-            <input  id="address" type="text"  name="address" onChange={handleInput} value={candidateInput.address} ></input><br></br>
+            <input  id="address" type="text"  name="address" onChange={handleInput} value={candidateInput.address} required="true"></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.address}</div> */}
             <br></br>
 
             <label >Mobile No.</label>
-            <input  id="mobileno" type="text"  name="mobileno" onChange={handleInput} value={candidateInput.mobileno} ></input><br></br>
+            <input  id="mobileno" type="text"  name="mobileno" onChange={handleInput} value={candidateInput.mobileno} required="true"></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.mobileno}</div> */}
             <br></br>
 
             <label >Qualification</label>
-            <input  id="qualification" type="text"  name="qualification" onChange={handleInput} value={candidateInput.qualification} ></input><br></br>
+            <input  id="qualification" type="text"  name="qualification" onChange={handleInput} value={candidateInput.qualification} required="true"></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.qualification}</div> */}
             <br></br>
 
             <label >Email</label>
-            <input  id="email" type="text"  name="email" onChange={handleInput} value={candidateInput.email} ></input><br></br>
+            <input  id="email" type="text"  name="email" onChange={handleInput} value={candidateInput.email} required="true" ></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.email}</div> */}
             <br></br>
 
             <label >Level</label>         
-            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={selectedLevelId} >
+            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={selectedLevelId} required="true" >
               <option>
                   Select Level
               </option>
@@ -215,7 +212,7 @@ function AddCandidate(){
             <br></br>
 
             <label >Job Role</label>
-            <select name="JobId" onChange={(e)=>handleJobId(e)} value={selectedJobId}>
+            <select name="JobId" onChange={(e)=>handleJobId(e)} value={selectedJobId} required="true">
               <option>
                   Select Job Role
               </option>
