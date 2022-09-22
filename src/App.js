@@ -24,6 +24,9 @@ import ViewLevel from './Components/InterviewLevel/ViewLevel';
 import UpdateLevel from './Components/InterviewLevel/UpdateLevel';
 import ViewCandidate from './Components/Candidate/ViewCandidate';
 import UpdateCandidate from './Components/Candidate/UpdateCandidate';
+import ViewPanel from './Components/Panel/ViewPanel';
+
+
 
  toast.configure();
 
@@ -92,7 +95,10 @@ function App() {
       <Route path='/Dashboard' element={<Dashboard/>}></Route>
 
       <Route path='/addcandidate' element={<Candidate/>}></Route>
-      <Route path='/Panel' element={<Panel/>}></Route>
+      <Route path='/viewpanel' element={<ViewPanel/>}></Route>
+      <Route path='/panel' element={<Panel/>}></Route>
+
+
 
 
       <Route path='/side' element={<Sidebar/>}></Route>

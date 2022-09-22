@@ -1,108 +1,236 @@
-import React, { Component } from 'react';
-import { Routes } from 'react-router-dom';
+import axios from 'axios';
+import React, { useState,useEffect } from "react";
 import Sidebar from '../Sidebar';
-import '../Dashboard.css';
+import './../Job/Job.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
+// import swal from 'sweetalert';
+
+function AddPanel(){
+    const Job_Baseurl="https://localhost:44348/api/Jobs";
+    const Panel_Baseurl="https://localhost:44348/api/Panel";
 
 
-class Panel extends Component {
+    const [levellist, setLevellist] = useState([]);
+    const [joblist, setJoblist] = useState([]);
+    const [selectedLevelId, setselectedLevelId] = useState(0);
+    const [selectedJobId, setselectedJobId] = useState(0);
 
-render() {
-return (
-    <div class="row">
-        <div class="side">
+
+
+
+    const [panelInput, setCandidate] = useState({
+        name : '',
+        address : '',
+        email: '',
+
+        mobileno : '',
+        LevelId : 0,
+        JobId : 0
+
+
+    });
+
+    // const [errorlist, setError]=useState([]);
+
+    const handleInput = (e) => {
+        e.persist();
+        setCandidate({...panelInput, [e.target.name]:e.target.value});
+
+    }
+
+    const handleLevelId = (e) => {
+      e.persist();
+      setselectedLevelId(Number(e.target.value));
+      console.log(e.target.value);
+
+  }
+
+  const handleJobId = (e) => {
+    e.persist();
+    setselectedJobId(Number(e.target.value));
+    console.log(e.target.value);
+
+
+}
+
+    useEffect(()=>{
+        axios.get(Job_Baseurl + `/GetAllInterviewLevels` ).then(res=>{
+           // if(res.data.status===200){
+                console.log(res.data);
+
+                setLevellist(res.data);
+
+           // }
+        })
+    },[]);
+
+    useEffect(()=>{
+        axios.get(Job_Baseurl + `/GetAllJobs` ).then(res=>{
+           // if(res.data.status===200){
+                console.log(res.data);
+
+                setJoblist(res.data);
+
+           // }
+        })
+    },[]);
+        
+       
+
+    // const submitCandidate = (e)=>{
+    //     e.preventDefault();
+
+    //     const formData = new FormData();
+    //     formData.append('name', panelInput.name);
+    //     formData.append('dob', panelInput.dob);
+    //     formData.append('address', panelInput.address);
+    //     formData.append('mobileno', panelInput.mobileno);
+    //     formData.append('qualification', panelInput.qualification);
+    //     formData.append('email', panelInput.email);
+    //     formData.append('level_id', panelInput.level_id);
+    //     formData.append('job_id', panelInput.job_id);
+    //     formData.append('resume', panelInput.resume);
+
+
+    //     axios.post(Candidate_Baseurl + `/AddCandidate`, formData).then(res=>{
+    //         if(res.data.status===200){
+    //             alert("Candidate added Successfully!");
+    //             // swal("Success", res.data.message,"success");
+    //             // setError([]);
+    //         }
+    //         else{
+    //             // swal("All fields are mandatory","","error");
+    //             // setError(res.data.errors);
+    //             alert("Something went wrong!");
+
+    //         }
+    //     }
+    //     )
+    // }
+
+    const submitPanel = (e) => {
+     // debugger;
+       // e.persist();
+        console.log(Panel_Baseurl + `/AddCandidate`);
+
+        const data = {
+            name: panelInput.name,
+            address: panelInput.address,
+            email: panelInput.email,
+
+            mobileno: panelInput.mobileno,
+            LevelId: selectedLevelId,
+            JobId: selectedJobId,
+
+        }
+
+        console.log(data);
+
+       // debugger;
+        axios.post(Panel_Baseurl + "/AddPanel", data).then(res => {
+         // debugger;
+            if(res?.data?.status === 200){
+                console.log(res.data);
+                window.location="/viewpanel";
+
+                alert("Panel added Successfully!");
+                setselectedLevelId(null);
+                setselectedJobId(null);
+           }
+            else{
+                alert("Something went wrong!");
+            }
+        }).catch((err)=>{
+            console.log(err)
+        })
+
+
+    }
+
+    return(
+        <div>
+               <div class="side">
         <Sidebar />
-        </div>
-        <div class="main">
-<div class="row" className="mb-2 pageheading">
+    </div>
+        <form className="addformjob" onSubmit={submitPanel} encType="multipart/form-data">
+            <h2><strong>Add Panel</strong></h2>
     
-  <br></br>
-<h3><strong>HR Panel</strong></h3>
+          {/* <br></br> */}
+            <label >Name</label>
+            <input  id="name" type="text"  name="name" onChange={handleInput} value={panelInput.name} required="true"></input><br></br>
+            {/* <div className="errorMsgJob">{errorlist.name}</div> */}
+            <br></br>
+
+            <label >Address</label>
+            <input  id="address" type="text"  name="address" onChange={handleInput} value={panelInput.address} required="true"></input><br></br>
+            {/* <div className="errorMsgJob">{errorlist.address}</div> */}
+            <br></br>
+
+            <label >Email</label>
+            <input  id="email" type="text"  name="email" onChange={handleInput} value={panelInput.email} required="true" ></input><br></br>
+            {/* <div className="errorMsgJob">{errorlist.email}</div> */}
+            <br></br>
+
+            <label >Mobile No.</label>
+            <input  id="mobileno" type="text"  name="mobileno" onChange={handleInput} value={panelInput.mobileno} required="true"></input><br></br>
+            {/* <div className="errorMsgJob">{errorlist.mobileno}</div> */}
+            <br></br>
+
+            <label >Level</label>         
+            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={selectedLevelId} required="true" >
+              <option>
+                  Select Level
+              </option>
+              {
+                levellist.map((item)=>{
+                  return(
+                    <option value={item.id} key={item.id}>{item.level}</option>
+                  )
+                })
+              }
+            </select>
+
+{/* <input  id="level_id" type="number"  name="level_id"  >1</input><br></br> */}
+
+            {/* <div className="errorMsgJob">{errorlist.level_id}</div> */}
+            <br></br>
+            <br></br>
+
+            <label >Job Role</label>
+            <select name="JobId" onChange={(e)=>handleJobId(e)} value={selectedJobId} required="true">
+              <option>
+                  Select Job Role
+              </option>
+              {
+                joblist.map((item)=>{
+                  return(
+                    <option value={item.id} key={item.id}>{item.jobRole}</option>
+                  )
+                })
+              }
+            </select>
+
 <br></br>
 
-<div class="home-content">
-        <div class="overview-boxes">
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Total Candidates</div>
-                    <div class="number">9</div>
-                    
-                </div>
-                <i class='bx bx-cart-alt cart'>
-                    <i class="bi bi-person-circle"></i>
+            <br></br>
+    {/* </div> */}
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
-                </i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Interviews Scheduled</div>
-                    <div class="number">5</div>
-                   
-                </div>
-                <i class='bx bx-cart cart three'>
-                    <i class="bi bi-file-person"></i>
+            <button id="jobb" className="btn btn-success" type="submit" onClick={()=>submitPanel}>Create</button>
+            <br></br>
+            <br></br>
+            {/* <Link to={'/addcandidate'}><button className="btn btn-outline-dark" type="submit" >Back</button>
+        </Link>  */}
+            <br></br>
 
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg>
-                </i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Interviews Done</div>
-                    <div class="number">3</div>
-                   
-                </div>
-                <i class='bx bxs-cart-add cart two'>
-
-
-                    <i class="bi bi-check-lg"></i>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
-                    </svg>
-
-                </i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Pending Interviews</div>
-                    <div class="number">2</div>
-                  
-                </div>
-                <i class='bx bxs-cart-download cart four'>
-                    <i class="bi bi-hourglass-split"></i>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">
-                        <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z" />
-                    </svg>
-                </i>
-            </div>
-        </div>
-      </div>
-
-      <br />
-    <p align="justify">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
-        pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus.
-        Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex,
-        in pretium orci vestibulum eget. Class aptent taciti sociosqu ad litora torquent
-        per conubia nostra, per inceptos himenaeos. Duis pharetra luctus lacus ut
-        vestibulum. Maecenas ipsum lacus, lacinia quis posuere ut, pulvinar vitae dolor.
-        Integer eu nibh at nisi ullamcorper sagittis id vel leo. Integer feugiat
-        faucibus libero, at maximus nisl suscipit posuere. Morbi nec enim nunc.
-        Phasellus bibendum turpis ut ipsum egestas, sed sollicitudin elit convallis.
-        Cras pharetra mi tristique sapien vestibulum lobortis. Nam eget bibendum metus,
-        non dictum mauris. Nulla at tellus sagittis, viverra est a, bibendum metus.
-    </p>
-
-</div>
-</div>
-</div>
-);
+            <Link to={'/panel'}><button className="btn btn-outline-dark" type="submit" onClick={()=>{window.location='/viewpanel'}}>Back</button>
+            </Link> 
+                <br></br>
+         
+        </form>
+    </div>
+    )
 }
-}
-export default Panel;
+  
+export default AddPanel;
+

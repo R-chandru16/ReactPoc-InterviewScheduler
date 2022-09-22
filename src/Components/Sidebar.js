@@ -87,7 +87,7 @@ return (
                                 </svg>
 
                             </i>
-                            <i></i><NavLink to="/panel"> <em>Panel</em></NavLink>
+                            <i></i><NavLink to="/viewpanel"> <em>Panel</em></NavLink>
            </a>
         </li>
     
