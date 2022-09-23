@@ -131,7 +131,7 @@ return (
                                 </svg>
 
                             </i>
-              <i></i><NavLink to="/register"><em>Candidate Availability</em></NavLink>
+              <i></i><NavLink to="/viewcandidateavailability"><em>Candidate Availability</em></NavLink>
            </a>
         </li>
         <li>

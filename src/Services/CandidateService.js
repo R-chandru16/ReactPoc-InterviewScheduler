@@ -28,7 +28,29 @@ class CandidateService{
     }
 
 
+
+    GetAllCandidateAvailabilities(){
+        return axios.get(Candidate_Baseurl+"/GetAllCandidateAvailabilities");
+    }
    
+    AddCandidateAvailability(candidateavailability){
+        return axios.post(Candidate_Baseurl+"/AddCandidateAvailability",candidateavailability);
+    }
+  
+
+    GetCandidateAvailabilityById(id){
+        return axios.get(Candidate_Baseurl+"/GetCandidateAvailabilityById/"+id);
+    }
+
+    UpdateCandidateAvailability(id, candidateavailability){
+        return axios.put(Candidate_Baseurl+"/UpdateCandidateAvailability?id="+id,candidateavailability);
+    }
+
+    DeleteCandidateAvailability(id)
+    {
+        return axios.delete(Candidate_Baseurl+"/DeleteCandidateAvailability?id="+id);
+    }
+
 }
 
 export default new CandidateService()
