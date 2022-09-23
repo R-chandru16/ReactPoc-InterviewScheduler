@@ -3,10 +3,10 @@ import React, { useState,useEffect } from "react";
 import Sidebar from '../Sidebar';
 import './../Job/Job.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // import swal from 'sweetalert';
 
-function AddPanel(){
+function UpdatePanel(){
     const Job_Baseurl="https://localhost:44348/api/Jobs";
     const Panel_Baseurl="https://localhost:44348/api/Panel";
 
@@ -19,7 +19,7 @@ function AddPanel(){
 
 
 
-    const [panelInput, setCandidate] = useState({
+    const [panelInput, setPanel] = useState({
         name : '',
         address : '',
         email: '',
@@ -35,7 +35,7 @@ function AddPanel(){
 
     const handleInput = (e) => {
         e.persist();
-        setCandidate({...panelInput, [e.target.name]:e.target.value});
+        setPanel({...panelInput, [e.target.name]:e.target.value});
 
     }
 
@@ -65,6 +65,8 @@ function AddPanel(){
         })
     },[]);
 
+    const {id} = useParams();
+
     useEffect(()=>{
         axios.get(Job_Baseurl + `/GetAllJobs` ).then(res=>{
            // if(res.data.status===200){
@@ -74,29 +76,38 @@ function AddPanel(){
 
            // }
         })
+
+        axios.get(Panel_Baseurl + `/GetPanelById/${id}`).then(res=>{
+            //if(res.data.status===200){
+                //console.log(res.data);
+                setPanel(res.data);
+                //alert("Candidate Updated Successfully");
+            //}
+           });
+
     },[]);
         
    
 
-    const submitPanel = (e) => {
+    const updatePanel = () => {
      // debugger;
        // e.persist();
+       
+        // const data = {
+        //     name: panelInput.name,
+        //     address: panelInput.address,
+        //     email: panelInput.email,
 
-        const data = {
-            name: panelInput.name,
-            address: panelInput.address,
-            email: panelInput.email,
+        //     mobileno: panelInput.mobileno,
+        //     LevelId: selectedLevelId,
+        //     JobId: selectedJobId,
 
-            mobileno: panelInput.mobileno,
-            LevelId: selectedLevelId,
-            JobId: selectedJobId,
+        // }
 
-        }
-
-        console.log(data);
+        // console.log(data);
 
        // debugger;
-        axios.post(Panel_Baseurl + "/AddPanel", data).then(res => {
+        axios.put(Panel_Baseurl + `/UpdatePanel/${id}`, panelInput).then(res => {
          // debugger;
             if(res?.data?.status === 200){
                 console.log(res.data);
@@ -121,8 +132,8 @@ function AddPanel(){
                <div class="side">
         <Sidebar />
     </div>
-        <form className="addformjob" onSubmit={submitPanel} encType="multipart/form-data">
-            <h2><strong>Add Panel</strong></h2>
+        <form className="addformjob" encType="multipart/form-data">
+            <h2><strong>Update Panel</strong></h2>
     
           {/* <br></br> */}
             <label >Name</label>
@@ -146,7 +157,7 @@ function AddPanel(){
             <br></br>
 
             <label >Level</label>         
-            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={selectedLevelId} required="true" >
+            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={panelInput.levelId} required="true" >
               <option>
                   Select Level
               </option>
@@ -166,7 +177,7 @@ function AddPanel(){
             <br></br>
 
             <label >Job Role</label>
-            <select name="JobId" onChange={(e)=>handleJobId(e)} value={selectedJobId} required="true">
+            <select name="JobId" onChange={(e)=>handleJobId(e)} value={panelInput.jobId} required="true">
               <option>
                   Select Job Role
               </option>
@@ -184,7 +195,7 @@ function AddPanel(){
             <br></br>
     {/* </div> */}
 
-            <button id="jobb" className="btn btn-success" type="submit" onClick={()=>submitPanel}>Create</button>
+            <button id="jobb" className="btn btn-success" type="submit" onClick={()=>updatePanel()}>Update</button>
             <br></br>
             <br></br>
             {/* <Link to={'/addcandidate'}><button className="btn btn-outline-dark" type="submit" >Back</button>
@@ -200,5 +211,5 @@ function AddPanel(){
     )
 }
   
-export default AddPanel;
+export default UpdatePanel;
 

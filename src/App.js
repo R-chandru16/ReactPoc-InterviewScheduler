@@ -25,6 +25,8 @@ import UpdateLevel from './Components/InterviewLevel/UpdateLevel';
 import ViewCandidate from './Components/Candidate/ViewCandidate';
 import UpdateCandidate from './Components/Candidate/UpdateCandidate';
 import ViewPanel from './Components/Panel/ViewPanel';
+import UpdatePanel from './Components/Panel/UpdatePanel';
+
 
 
 
@@ -97,6 +99,8 @@ function App() {
       <Route path='/addcandidate' element={<Candidate/>}></Route>
       <Route path='/viewpanel' element={<ViewPanel/>}></Route>
       <Route path='/panel' element={<Panel/>}></Route>
+      <Route path='/updatepanel/:id' element={<UpdatePanel/>}></Route>
+
 
 
 
