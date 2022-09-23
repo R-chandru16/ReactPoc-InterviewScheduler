@@ -157,9 +157,13 @@ function AddCandidate(){
                <div class="side">
         <Sidebar />
     </div>
+    {/* <div class="row"> */}
+
         <form className="addformjob" onSubmit={submitCandidate} encType="multipart/form-data">
+
             <h2><strong>Add Candidate</strong></h2>
-    
+
+            <div class="column">
           {/* <br></br> */}
             <label >Name</label>
             <input  id="name" type="text"  name="name" onChange={handleInput} value={candidateInput.name} required="true"></input><br></br>
@@ -185,6 +189,8 @@ function AddCandidate(){
             <input  id="qualification" type="text"  name="qualification" onChange={handleInput} value={candidateInput.qualification} required="true"></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.qualification}</div> */}
             <br></br>
+</div>
+<div class="column">
 
             <label >Email</label>
             <input  id="email" type="text"  name="email" onChange={handleInput} value={candidateInput.email} required="true" ></input><br></br>
@@ -237,7 +243,7 @@ function AddCandidate(){
 
             <br></br>
     {/* </div> */}
-
+    </div>
             <button id="jobb" className="btn btn-success" type="submit" onClick={()=>submitCandidate}>Create</button>
             <br></br>
             <br></br>
@@ -250,6 +256,8 @@ function AddCandidate(){
                 <br></br>
          
         </form>
+        {/* </div> */}
+
     </div>
     )
 }

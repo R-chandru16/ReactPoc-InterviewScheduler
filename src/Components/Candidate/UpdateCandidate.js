@@ -40,6 +40,9 @@ function UpdateCandidate(){
     // const [errorlist, setError]=useState([]);
 
     const handleInput = (e) => {
+      //debugger;
+      console.log({...candidateInput, [e.target.name]:e.target.value})
+
         e.persist();
         setCandidate({...candidateInput, [e.target.name]:e.target.value});
 
@@ -82,10 +85,7 @@ function UpdateCandidate(){
 
             
         })
-    },[]);
 
-   
-   //console.log(id);
    axios.get(Candidate_Baseurl + `/GetCandidateById/${id}`).then(res=>{
     //if(res.data.status===200){
         //console.log(res.data);
@@ -94,6 +94,10 @@ function UpdateCandidate(){
     //}
    });
 
+    },[]);
+
+   
+  
        
     
  
@@ -187,10 +191,10 @@ function UpdateCandidate(){
   
 
 
-    const updateCandidate = (e) => {
+    const updateCandidate = () => {
+      console.log(candidateInput)
      // debugger;
        // e.persist();
-        console.log(Candidate_Baseurl + `/AddCandidate`);
 
         // const data = {
         //     name: candidateInput.name,
@@ -205,12 +209,12 @@ function UpdateCandidate(){
 
         // }
 
-        const data = candidateInput;
+        // const data = candidateInput;
 
-        console.log(data);
+        // console.log(data);
 
        // debugger;
-        axios.put(Candidate_Baseurl + `/UpdateCandidate/${id}`, data).then(res => {
+        axios.put(`https://localhost:44348/api/Candidate/UpdateCandidate/${id}`, candidateInput).then(res => {
          // debugger;
             // if(res?.data?.status === 200){
                 console.log(res.data);
@@ -224,7 +228,7 @@ function UpdateCandidate(){
           //       alert("Something went wrong!");
           //   }
         }).catch((err)=>{
-            console.log(err)
+            // console.log(err)
         })
 
 
@@ -235,6 +239,7 @@ function UpdateCandidate(){
                <div class="side">
         <Sidebar />
     </div>
+    
         <form className="addformjob" encType="multipart/form-data">
             <h2><strong>Update Candidate</strong></h2>
     
@@ -245,7 +250,7 @@ function UpdateCandidate(){
             <br></br>
 
             <label >DOB</label>
-            <input  id="dob" type="date"  name="dob" onChange={handleInput} value={candidateInput.dob} required="true"></input><br></br>
+            <input  id="dob" type="datetime"  name="dob" onChange={handleInput} value={candidateInput.dob.toString()} ></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.dob}</div> */}
             <br></br>
 
@@ -271,7 +276,7 @@ function UpdateCandidate(){
 
             <label >Level</label>         
             {/* <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={selectedLevelId} required="true" > */}
-            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={candidateInput.LevelId} required="true" >
+            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={candidateInput.levelId} required="true" >
 
               <option>
                   Select Level
@@ -293,7 +298,7 @@ function UpdateCandidate(){
 
             <label >Job Role</label>
             {/* <select name="JobId" onChange={(e)=>handleJobId(e)} value={selectedJobId} required="true"> */}
-            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={candidateInput.JobId} required="true" >
+            <select name="LevelId" onChange={(e)=>handleLevelId(e)} value={candidateInput.jobId} required="true" >
 
               <option>
                   Select Job Role
@@ -320,7 +325,7 @@ function UpdateCandidate(){
             <br></br>
     {/* </div> */}
 
-            <button id="jobb" className="btn btn-success" type="submit" onClick={()=>updateCandidate}>Create</button>
+            <button id="jobb" className="btn btn-success" type="submit" onClick={()=>updateCandidate()}>Update</button>
             <br></br>
             <br></br>
             {/* <Link to={'/addcandidate'}><button className="btn btn-outline-dark" type="submit" >Back</button>

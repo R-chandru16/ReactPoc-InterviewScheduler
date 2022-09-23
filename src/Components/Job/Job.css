@@ -78,3 +78,24 @@ label{
 #Jobid{
 margin-top: 2px;
 }
+
+
+/* .column {
+    float: left;
+    width: 30%;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  } */
+
+
+  /* .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  } */
