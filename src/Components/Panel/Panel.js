@@ -21,7 +21,6 @@ function AddPanel(){
 
     const [panelInput, setCandidate] = useState({
         name : '',
-        address : '',
         email: '',
 
         mobileno : '',
@@ -84,7 +83,6 @@ function AddPanel(){
 
         const data = {
             name: panelInput.name,
-            address: panelInput.address,
             email: panelInput.email,
 
             mobileno: panelInput.mobileno,
@@ -130,10 +128,6 @@ function AddPanel(){
             {/* <div className="errorMsgJob">{errorlist.name}</div> */}
             <br></br>
 
-            <label >Address</label>
-            <input  id="address" type="text"  name="address" onChange={handleInput} value={panelInput.address} required="true"></input><br></br>
-            {/* <div className="errorMsgJob">{errorlist.address}</div> */}
-            <br></br>
 
             <label >Email</label>
             <input  id="email" type="text"  name="email" onChange={handleInput} value={panelInput.email} required="true" ></input><br></br>

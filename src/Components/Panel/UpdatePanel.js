@@ -21,7 +21,6 @@ function UpdatePanel(){
 
     const [panelInput, setPanel] = useState({
         name : '',
-        address : '',
         email: '',
 
         mobileno : '',
@@ -79,7 +78,7 @@ function UpdatePanel(){
 
         axios.get(Panel_Baseurl + `/GetPanelById/${id}`).then(res=>{
             //if(res.data.status===200){
-                //console.log(res.data);
+                console.log(res.data);
                 setPanel(res.data);
                 //alert("Candidate Updated Successfully");
             //}
@@ -95,7 +94,6 @@ function UpdatePanel(){
        
         // const data = {
         //     name: panelInput.name,
-        //     address: panelInput.address,
         //     email: panelInput.email,
 
         //     mobileno: panelInput.mobileno,
@@ -141,11 +139,7 @@ function UpdatePanel(){
             {/* <div className="errorMsgJob">{errorlist.name}</div> */}
             <br></br>
 
-            <label >Address</label>
-            <input  id="address" type="text"  name="address" onChange={handleInput} value={panelInput.address} required="true"></input><br></br>
-            {/* <div className="errorMsgJob">{errorlist.address}</div> */}
-            <br></br>
-
+        
             <label >Email</label>
             <input  id="email" type="text"  name="email" onChange={handleInput} value={panelInput.email} required="true" ></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.email}</div> */}

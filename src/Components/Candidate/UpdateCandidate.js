@@ -137,7 +137,7 @@ function UpdateCandidate(){
             <br></br>
 
             <label >DOB</label>
-            <input  id="dob" type="datetime"  name="dob" onChange={handleInput} value={candidateInput.dob.toString()} ></input><br></br>
+            <input  id="dob" type="date"  name="dob" onChange={handleInput} value={candidateInput.dob} ></input><br></br>
             {/* <div className="errorMsgJob">{errorlist.dob}</div> */}
             <br></br>
 
