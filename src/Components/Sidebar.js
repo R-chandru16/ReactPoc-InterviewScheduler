@@ -145,7 +145,7 @@ return (
                                 </svg>
 
                             </i>
-              <i></i><NavLink to="/register"><em>Panel Availability</em></NavLink>
+              <i></i><NavLink to="/viewpanelavailability"><em>Panel Availability</em></NavLink>
            </a>
         </li>
 
@@ -160,7 +160,7 @@ return (
                                 </svg>
 
                             </i>
-              <i></i><NavLink to="/register"><em>Schedule</em></NavLink>
+              <i></i><NavLink to="/viewschedule"><em>Schedule</em></NavLink>
            </a>
         </li>
         <li>
@@ -173,7 +173,7 @@ return (
                                     <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zM3 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V9h-4.5A1.5 1.5 0 0 0 9 10.5V15H3.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V10.5a.5.5 0 0 1 .5-.5h4.293L10 14.793z" />
                                 </svg>
                             </i>
-              <i></i><NavLink to="/register"><em>Interview Status</em></NavLink>
+              <i></i><NavLink to="/viewstatus"><em>Interview Status</em></NavLink>
            </a>
         </li>
      </ul>
