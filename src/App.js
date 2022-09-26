@@ -28,7 +28,7 @@ import ViewPanel from './Components/Panel/ViewPanel';
 import UpdatePanel from './Components/Panel/UpdatePanel';
 import CandidateAvailability from './Components/CandidateAvailability/CandidateAvailability';
 import ViewCandidateAvailability from './Components/CandidateAvailability/ViewCandidateAvailability';
-
+import UpdateCandidateAvailability from './Components/CandidateAvailability/UpdateCandidateAvailability';
 
 
 
@@ -121,6 +121,7 @@ function App() {
       <Route path='/updatecandidate/:id' element={<UpdateCandidate/>}></Route>
       <Route path='/candidateavailability' element={<CandidateAvailability/>}></Route>
       <Route path='/viewcandidateavailability' element={<ViewCandidateAvailability/>}></Route>
+      <Route path='/updatecandidateavailability/:id' element={<UpdateCandidateAvailability/>}></Route>
 
 
 
