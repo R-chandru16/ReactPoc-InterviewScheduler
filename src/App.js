@@ -1,39 +1,42 @@
-
 import './App.css';
-
 import { BrowserRouter ,Route,Routes,Link} from 'react-router-dom';
-import Register from './Components/Register';
-
-
+import { useState } from 'react';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import pic from "./images/kanini.webp";
+
+import Register from './Components/Register';
 import Login from './Components/Login';
 import Dashboard from './Components/Dashboard';
+import Sidebar from './Components/Sidebar';
+
 import Job from './Components/Job/Job';
 import ViewJob from './Components/Job/ViewJob';
 import UpdateJob from './Components/Job/UpdateJob';
 
 import Interview from './Components/InterviewLevel/AddInterview';
-
-import { useState } from 'react';
-import {toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Sidebar from './Components/Sidebar';
-import Candidate from './Components/Candidate/Candidate';
-import Panel from './Components/Panel/Panel';
 import ViewLevel from './Components/InterviewLevel/ViewLevel';
 import UpdateLevel from './Components/InterviewLevel/UpdateLevel';
+
+import Candidate from './Components/Candidate/Candidate';
 import ViewCandidate from './Components/Candidate/ViewCandidate';
 import UpdateCandidate from './Components/Candidate/UpdateCandidate';
+
+import Panel from './Components/Panel/Panel';
 import ViewPanel from './Components/Panel/ViewPanel';
 import UpdatePanel from './Components/Panel/UpdatePanel';
+
 import CandidateAvailability from './Components/CandidateAvailability/CandidateAvailability';
 import ViewCandidateAvailability from './Components/CandidateAvailability/ViewCandidateAvailability';
 import UpdateCandidateAvailability from './Components/CandidateAvailability/UpdateCandidateAvailability';
+
 import PanelAvailability from './Components/PanelAvailability/PanelAvailability';
 import ViewPanelAvailability from './Components/PanelAvailability/ViewPanelAvailability';
 import UpdatePanelAvailability from './Components/PanelAvailability/UpdatePanelAvailabiity';
+
 import Schedule from './Components/Schedule/Schedule';
 import ViewSchedule from './Components/Schedule/ViewSchedule';
+import UpdateSchedule from './Components/Schedule/UpdateSchedule';
 
 
  toast.configure();
@@ -128,6 +131,7 @@ function App() {
 
       <Route path='/schedule' element={<Schedule/>}></Route>
       <Route path='/viewschedule' element={<ViewSchedule/>}></Route>
+      <Route path='/updateschedule/:id' element={<UpdateSchedule/>}></Route>
 
 
       
