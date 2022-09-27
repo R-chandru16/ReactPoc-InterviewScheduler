@@ -32,7 +32,8 @@ import UpdateCandidateAvailability from './Components/CandidateAvailability/Upda
 import PanelAvailability from './Components/PanelAvailability/PanelAvailability';
 import ViewPanelAvailability from './Components/PanelAvailability/ViewPanelAvailability';
 import UpdatePanelAvailability from './Components/PanelAvailability/UpdatePanelAvailabiity';
-
+import Schedule from './Components/Schedule/Schedule';
+import ViewSchedule from './Components/Schedule/ViewSchedule';
 
 
  toast.configure();
@@ -95,22 +96,19 @@ function App() {
             
      <Routes>
     
-      <Route path="/register" element={<Register/>}></Route>
-     
+      <Route path="/register" element={<Register/>}></Route>    
       <Route path='/' element={<Login/>}></Route>
-
       <Route path='/Dashboard' element={<Dashboard/>}></Route>
+      <Route path='/side' element={<Sidebar/>}></Route>
+
 
       <Route path='/addcandidate' element={<Candidate/>}></Route>
+      <Route path='/viewcandidate' element={<ViewCandidate/>}></Route>
+      <Route path='/updatecandidate/:id' element={<UpdateCandidate/>}></Route>
+      
       <Route path='/viewpanel' element={<ViewPanel/>}></Route>
       <Route path='/panel' element={<Panel/>}></Route>
       <Route path='/updatepanel/:id' element={<UpdatePanel/>}></Route>
-
-
-
-
-
-      <Route path='/side' element={<Sidebar/>}></Route>
 
       <Route path='/job' element={<Job/>}></Route>
       <Route path='/viewjob' element={<ViewJob/>}></Route>
@@ -119,9 +117,7 @@ function App() {
       <Route path='/interview' element={<Interview/>}></Route>
       <Route path='/updatelevel/:id' element={<UpdateLevel/>}></Route>
       <Route path='/viewlevel' element={<ViewLevel/>}></Route>
-      <Route path='/viewcandidate' element={<ViewCandidate/>}></Route>
 
-      <Route path='/updatecandidate/:id' element={<UpdateCandidate/>}></Route>
       <Route path='/candidateavailability' element={<CandidateAvailability/>}></Route>
       <Route path='/viewcandidateavailability' element={<ViewCandidateAvailability/>}></Route>
       <Route path='/updatecandidateavailability/:id' element={<UpdateCandidateAvailability/>}></Route>
@@ -129,6 +125,9 @@ function App() {
       <Route path='/panelavailability' element={<PanelAvailability/>}></Route>
       <Route path='/viewpanelavailability' element={<ViewPanelAvailability/>}></Route>
       <Route path='/updatepanelavailability/:id' element={<UpdatePanelAvailability/>}></Route>
+
+      <Route path='/schedule' element={<Schedule/>}></Route>
+      <Route path='/viewschedule' element={<ViewSchedule/>}></Route>
 
 
       
